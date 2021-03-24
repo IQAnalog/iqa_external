@@ -1,0 +1,156 @@
+0,23,CAPTURE_PLAYBACK_CONTROL,RW,
+,[0],sw_rst_n,SOFTWARE RESETn - RISC-V resets Controller only - Chip wakes up with SOFTWARE RESET OFF,1'b1
+,[1],axi_bus_access,RISC-V allows AXI BUS Access - Chip wakes up with AXI BUS Access,1'b1
+,[17:2],sample_size,RISC-V writes sample_size,16'h0000
+,[18],axi_test_en,test_en_i used in the AXI Bus Mux,1'b0
+#,[20:19],sel_adc,selects the ADC that is providing data to the SRAMs,2'b00
+,[19],repeat_capture_playback,Repeats the capture or the playback,1'b0
+,[20],en_trigger_capture_playbackn,if 1 trigger enables capture-if 0 trigger enables playback,1'b1
+,[21],dac_sel,Selects either playback data (1'b1) or DSP_DAC data (1'b0),1'b0
+,[22],mem_play_adc_sel,Selects either playback data (1'b1) or adc_cal data (1'b0),1'b0
+
+1,11,CAPTURE_PLAYBACK_STATUS,RO,
+,[0],capture_complete,Indicates memory capture is complete,1'b0
+,[1],invalid_sample_size,ERROR: Indicates sample size is invalid,1'b0
+,[5:2],fsm_state,FSM State of mem_capture_playback controller,3'b000
+,[6],axi_bus_access_mode,1:axi_bus_access_mode;0:capture_playback_mode,1'b0
+,[7],playback_complete,Indicates memory playback is complete,1'b0
+,[8],capture_playback_both_on,ERROR: Indicates both initiate_capture and initiate_playback are ON,1'b0
+,[9],invalid_axi_bus_access,ERROR: Indicates axi_bus_access when initiate_capture OR initiate_playback is ON,1'b0
+,[10],invalid_repeat_capture_playback,ERROR: Indicates repeat_capture playback with both initiate_capture AND initiate_playback OFF,1'b0
+
+2,9,START_CAPTURE_PLAYBACK_ADDRESS,RW,
+,[8:0],start_capture_playback_address,Capture or Playback starts from this address,9'b0
+
+3,5,BYTE_WRITE_MASK,RW,
+,[4:0],be_write_mask,Masks writes of bytes - active HIGH,5'b1111
+
+4,16,CEN_MASK,RW,
+,[15:0],cen_mask,Masks CEN so that SRAMs can be addressed separately - active LOW,16'h0
+
+5,32,AXI_BUS_MUX_Q,RO,
+,[31:0],axi_bus_mux_Q,Q output piped through the AXI BUS MUX,32'h0
+
+6,7,SHARED_SRAM_CONTROL,RW,
+,[0],stov,STOV - Self-timed pulse override active-HIGH,1'b0
+,[3:1],ema,EMA - Extra Margin Adjustment,3'b010
+,[5:4],emaw,EMAW - Extra Margin Adjustment - WRITE,2'b01
+,[6],emas,EMAS - Extra Margin Adjustment - SENSE AMPLIFIER PULSE,1'b0
+
+7,15,SRAM_15_CONTROL,RW,
+,[0],rdt_15,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_15,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_15,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_15,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_15,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+8,15,SRAM_14_CONTROL,RW,
+,[0],rdt_14,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_14,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_14,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_14,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_14,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+9,15,SRAM_13_CONTROL,RW,
+,[0],rdt_13,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_13,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_13,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_13,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_13,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+10,15,SRAM_12_CONTROL,RW,
+,[0],rdt_12,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_12,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_12,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_12,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_12,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+11,15,SRAM_11_CONTROL,RW,
+,[0],rdt_11,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_11,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_11,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_11,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_11,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+12,15,SRAM_10_CONTROL,RW,
+,[0],rdt_10,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_10,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_10,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_10,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_10,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+13,15,SRAM_9_CONTROL,RW,
+,[0],rdt_9,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_9,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_9,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_9,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_9,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+14,15,SRAM_8_CONTROL,RW,
+,[0],rdt_8,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_8,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_8,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_8,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_8,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+15,15,SRAM_7_CONTROL,RW,
+,[0],rdt_7,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_7,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_7,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_7,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_7,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+16,15,SRAM_6_CONTROL,RW,
+,[0],rdt_6,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_6,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_6,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_6,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_6,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+17,15,SRAM_5_CONTROL,RW,
+,[0],rdt_5,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_5,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_5,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_5,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_5,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+18,15,SRAM_4_CONTROL,RW,
+,[0],rdt_4,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_4,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_4,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_4,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_4,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+19,15,SRAM_3_CONTROL,RW,
+,[0],rdt_3,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_3,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_3,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_3,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_3,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+20,15,SRAM_2_CONTROL,RW,
+,[0],rdt_2,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_2,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_2,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_2,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_2,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+21,15,SRAM_1_CONTROL,RW,
+,[0],rdt_1,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_1,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_1,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_1,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_1,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+22,15,SRAM_0_CONTROL,RW,
+,[0],rdt_0,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_0,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_0,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[8:3],fca1_0,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[14:9],fca2_0,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+23,1,INITIATE_CAPTURE_CONTROL,RW,
+a,[0],initiate_capture,RISC-V initiates capture,1'b0
+
+24,1,INITIATE_PLAYBACK_CONTROL,RW,
+a,[0],initiate_playback,RISC-V initiates playback,1'b0

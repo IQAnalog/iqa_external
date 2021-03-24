@@ -1,0 +1,37 @@
+0,32,CHIP_ID,RO,
+,[31:0],chip_id,Chip ID and revision.,
+
+1,14,CONFIGURATION,RW,
+,[3:0],reserved_epa,Reserved space,4'hF
+,[4],fetch_enable,Enable processor A,1'b0
+,[13:5],lmfc_cnt_value,clock counts between two pulses,9'h0EF
+
+# =========================
+# Added in F1000 REV B
+# =========================
+# Moved CORE_ID to a separate RO space and "reserved" the original RW register
+2,4,CORE_ID,RO,
+,[3:0],core_id,ID for processor A,
+
+3,7,DUMMY_BITS,RO,
+,[6:0],dummy_bits,For non-connect outputs,7'h00
+#
+# =======================================================
+# Underlying regs NEED TO BE REVIEWED in F1000 REV B
+# =======================================================
+#
+#4,8,AD_DELAY_SELECT,RW,
+#,[0],epa_adc_del_sel,0: delay 100ps; 1: delay 300ps on processor A,1'd0
+#,[1],epa_dac_del_sel,0: delay 100ps; 1: delay 300ps on processor A,1'd0
+#,[2],epa_tx_del_sel,0: delay 100ps; 1: delay 300ps on processor A,1'd0
+#,[3],epa_rx_del_sel,0: delay 100ps; 1: delay 300ps on processor A,1'd0
+#,[4],epb_adc_del_sel,0: delay 100ps; 1: delay 300ps on processor B,1'd0
+#,[5],epb_dac_del_sel,0: delay 100ps; 1: delay 300ps on processor B,1'd0
+#,[6],epb_tx_del_sel,0: delay 100ps; 1: delay 300ps on processor B,1'd0
+#,[7],epb_rx_del_sel,0: delay 100ps; 1: delay 300ps on processor B,1'd0
+#
+#5,32,OOPS_EPA,RW,
+#,[31:0],oops_epa,reserved bits for element processor A,32'h0
+#
+#6,32,OOPS_EPB,RW,
+#,[31:0],oops_epb,reserved bits for element processor B,32'h0

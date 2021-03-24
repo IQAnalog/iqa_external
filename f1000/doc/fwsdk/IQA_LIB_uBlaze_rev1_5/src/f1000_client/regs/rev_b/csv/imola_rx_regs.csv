@@ -1,0 +1,296 @@
+0,28,RX_LINK_CONFIG,RW,
+,[0],sw_rst_n,SOFTWARE RESETn-RISC-V resets FRAMER Only-Chip wakes up with SOFTWARE RESET OFF,1'b1
+,[5:1],frame_size,RX Link number of octets per frame (F) minus 1.,5'd23
+,[9:6],multiframe_size,RX Link number of frames per multi frame (K) minus 1.,4'd15
+,[10],subclass,Subclass 0 or Subclass 1 selection.,1'b1
+,[11],disable_reconfig,Disable lane dynamic reconfig from ILAS configuration.,1'b1
+,[12],disable_sysref_monitor,Disable error count of periodic SYSREF misalignment.,1'b0
+,[13],disable_sysref_realign,Disable periodic SYSREF realignment.,1'b1
+,[14],force_resync,Forcefully issue a link re-synchronization on all RX lanes.,1'b0
+,[15],hw_enable_framer_controller,This allow all lanes to be enabled at the same time for synchronization,1'b0
+,[16],shift_ping_pong,shifts ping_pong signal by 1 cycle for the sake of alignment,1'b0
+,[20:17],rd_ll2tl_fifo_threshold,Threshold for reading the LL2TL_FIFO.,4'd8
+,[23:21],lane_clk_sel,Link layer main clock selection,3'h0
+,[24],en_rx2tx_lpbk,Enable the 10-bit RX data per lane to be looped back FROM RX to the TX.,1'b0
+,[25],en_tx2rx_lpbk,Enable the 10-bit TX data per lane to be looped back FROM TX to the RX.,1'b0
+,[26],sel_cdr_data4lpbk,Select RX_CDR output data for loopback.,1'b1
+,[27],byte_swap,Swap MSB / LSB byte positions when combining link layer data to 16-bit framer data.,1'b0
+
+1,10,RX_LINK_ENABLE,RW,
+,[0],link0_enable,Link enable for Link 0,1'b1
+,[1],link1_enable,Link enable for Link 1,1'b0
+,[2],rx_enable,RX Path global enable,1'b1
+,[3],dual_link,Enable bit for dual link mode.,1'b0
+,[4],link0_en_sync_from_rx_sync,Use sync_n from the rx_sync block to drive link0 rx_sync_n.,1'b1
+,[5],link0_man_misalign_sync,Use manual misaligned sync_n to drive link0 rx_sync_n.,1'b0
+,[6],link0_man_align_sync,Use manual sync_n aligned to frame boundary to drive link0 rx_sync_n.,1'b0
+,[7],link1_en_sync_from_rx_sync,Use sync_n from the rx_sync block to drive link1 rx_sync_n.,1'b1
+,[8],link1_man_misalign_sync,Use manual misaligned sync_n to drive link1 rx_sync_n.,1'b0
+,[9],link1_man_align_sync,Use manual sync_n aligned to frame boundary to drive link1 rx_sync_n.,1'b0
+
+2,16,RX_COMMA_CONFIG,RW,
+,[7:0],lock_threshold,Successive /K/ (comma) symbols for CGS lock minus 1.,8'h3
+,[15:8],resync_threshold,Number of received /K/ (comma) symbols in data state for resync minus 1.,8'h5
+
+3,8,RX_ALIGN_CONFIG,RW,
+,[7:0],sysref_align_delay,Number of clocks to delay from SYSREF to LMFC.,8'h1
+
+4,16,RX_CGS_CONFIG,RW,
+,[7:0],rx_cgs_check_clr_count,Symbol count prior to clearing errors after CHECK state.,8'h8
+,[8],rx_cgs_fsm_disable,Disable the RX CGS FSM for all lanes.,1'b0
+,[15:9],rx_resync_delay,Number of FCLK periods to delay after re-sync prior to CGS retry.,8'hf
+
+5,16,RX_SYSREF_MISALIGN_COUNT,RO,
+,[15:0],sysref_misalign_cnt,Count of SYSREF to LMFC misalignment errors detected.,
+
+6,8,RX_LANE_ENABLE,RW,
+,[7:0],rx_lane_enable,Enable bits for RX Lanes.,8'h0
+
+7,18,RX_ILAS_CONFIG,RW,
+,[7:0],rx_ilas_multiframes,Number of multiframes in the ILAS align stage minus 1.,8'h3
+,[8],rx_ilas_disable,Disable for the ILAS state machines.,1'b0
+,[9],rx_ilas_disable_align_error,Disable of ILAS alignment error checking.,1'b0
+,[10],disable_align_mon,Disable lane alignment monitoring.,1'b0
+,[11],disable_autorealign,Disable automatic lane realignment.,1'b1
+,[12],enable_nmcda_sl,Enable No Multiple Converter Device Align/Single Lane mode.,1'b0
+,[15:13],ilas_config_lane,Lane number to use for dynamic configuration data.,3'h0
+,[16],disable_error_replay,Disable replaying previous good frame on error.,1'b0
+,[17],zero_errored_data,Zero out RX data with errors.,1'b0
+
+8,3,RX_SCRAMBLE_CONFIG,RW,
+,[0],rx_scramble,Force the scrambler on in the RX block.,1'b0
+,[1],rx_early_sync,Enable early synchronization of the descrambler.,1'b1
+,[2],rx_allow_cfg_scr,Allow ILAS config to set scramble mode.,1'b1
+
+9,16,RX_OUT_TIMING,RW,
+,[7:0],out_fclk_delay,Number of Frame Clock delays before output to DAC after all lanes aligned (Subclass 0).,8'h1
+,[12:8],out_early_count,Number of Frame Clocks to output to DAC prior to next LMFC (Subclass 1).,8'h0
+,[15:13],out_lmfc_count,Number of LMFC periods to delay before output to DAC.,3'h0
+
+10,16,RX_TRANSPORT_CONFIG,RW,
+,[4:0],rx_cfg_m,Number of DAC devices per link (M) minus 1.,5'h7
+,[9:5],rx_cfg_n,Converter resolution ... number of bits (N) minus 1.,5'hf
+,[14:10],rx_cfg_nprime,Number of bits RX per sample (N') minus 1.,4'hf
+,[15],rx_cfg_s,Number of samples per frame (S) minus 1.,1'h1
+
+11,9,RX_DEBUG,RW,
+,[0],allow_sim_error,Allow simulated /K28.1/ errors.,8'b1
+,[1],short_test_en,Transport Layer Short Test Enable.,1'b0
+,[5:2],short_test_sel,Selection of DAC output for Short Test,4'h0
+,[8:6],sel_linklayer_out,Select what lane's linklayer_out is MUXed to linklayer_out_2_reg,3'b000
+
+12,15,RX_FCLK_AND_LINKLAYER_STATUS,RO,
+,[0],fclk_lmfc_aligned,LMFC Aligned indication.,
+,[1],fclk_fsm_lock,Indicates the FCLK state machine has locked.,
+,[2],link0_read_enable,Indicates all lanes in link0 are in DATA STATE.,
+,[3],link1_read_enable,Indicates all lanes in link1 are in DATA STATE.,
+,[12:4],linklayer_out_2_reg,Registered MUXed linklayer_out's for observability.,
+,[13],link0_rx_sync_n_status,Indicates status of the combined rx_sync_n for link0.,
+,[14],link1_rx_sync_n_status,Indicates status of the combined rx_sync_n for link1.,
+
+13,8,RX_D21_5_THRESHOLD,RW,
+,[7:0],d21_5_lock_thresh,Successive /D21_5/ symbols for test_repeat_d21_5 mode minus 1.,8'h3
+
+14,16,PHY_ATEST_CTRL,RW,
+,[15:0],phy_atest_ctrl,Atest control bus,16'd0
+
+15,16,RX_GP,RW,
+,[15:0],rx_gp,General purpose for rx,16'd0
+
+16,8,DLL1_ATEST_CTRL,RW,
+,[7:0],dll_atest_ctrl,DLL atest control bus,8'd0
+
+17,15,DLL_CTRL_REGS,RW,
+,[5:0],dll_ctrl,DLL control,6'b100000
+,[7:6],dll_strt_del,DLL start delay,2'b00
+,[9:8],dll_cp_opamp_bias_ctrl,bias control for CP opamp of DLL,2'b00
+,[11:10],dll_cml_bias_ctrl,DLL CML bias control,2'b10
+,[13:12],dll_cp_s2d_bias_ctrl,DLL CP S2D bias control,2'b00
+,[14],en_vc_comp,Enable vctrl comparator,1'b0
+
+18,16,DLL_CPPFD_CTRL_REGS,RW,
+,[0],dll_pfd_dly,DLL PFD delay,1'b0
+,[3:1],dll_cp_curr_ctrl,DLL CP current control,3'b011
+,[4],dll_cp_en,DLL CP enable,1'b1
+,[7:5],dll_cap_ctrl_b,DLL CP cap control,3'b100
+,[11:8],icp_p,Charge pump offset current pmos side,4'b1111
+,[15:12],icp_n,Charge pump offset current nmos side,4'b0000
+
+19,12,DLL_VCDL_DLY_REGS,RW,
+,[3:0],dll_vcdl_del1,DLL VCDL stage 1 delay,4'b0010
+,[7:4],dll_vcdl_del2,DLL VCDL stage 2 delay,4'b0010
+,[11:8],dll_vcdl_del3,DLL VCDL stage 3 delay,4'b1000
+
+20,2,DLL_DUTY_CYL_REGS,RW,
+,[1:0],dll_duty_cycle,DLL duty cycle control,2'b00
+
+21,3,DLL_RSTN_REGS,RW,
+,[0],dll_rst_n,DLL rst_n,1'b1
+,[1],bbpd_rst,Bang-bang phase detector reset,1'b0
+,[2],dll_ld_rst,DLL lock detect reset,1'b0
+
+22,8,DLL_GP,RW,
+,[7:0],dll_gp,General purpose bits for DLL,8'd3
+
+23,15,DLL_LOCK_DETECT,RO,
+,[3:0],dll_lock_detect,4_bit encoding of detected DLL LOCK from SERDES.,
+,[4],vc_comp,1 bit comparator output of control voltage comparator,
+,[14:5],bbpd,10 bit bang-bang phase detector output,
+
+24,6,RX_PRBS_CTRL,RW,
+,[0],rx_pol,RX Polarity 1-pattern inverted before its checked 0-pattern not inverted before its checked,1'b0
+,[3:1],rx_prbs_sel,RX PRBS Select,3'b000
+,[4],rx_check_non_prbs,Check non-PRBS patterns and increment error counters if there are errors,1'b0
+,[5],rx_enable_prbs_priming,Enable lfsr register priming before checking errors logic.,1'b0
+
+25,16,RX_LANE_IF_CTRL,RW,
+,[7:0],lane_if_delay,Per RX lane interface delay control,8'h0
+,[15:8],lane_clk_enables,Per RX lane interface clock gate enable.  This enables both 1.6GHz link layer / CDR and 1.0G framer clocks.,8'h00
+
+26,32,LANE0_RX_ERR_CNT_LSB,RO,
+,[31:0],lane0_rx_err_cnt_lsb,32 lsb bits of LANE0 RX PRBS Error Counter,
+
+27,16,LANE0_RX_ERR_CNT_MSB,RO,
+,[15:0],lane0_rx_err_cnt_msb,16 msb bits of LANE0 RX PRBS Error Counter,
+
+28,32,LANE1_RX_ERR_CNT_LSB,RO,
+,[31:0],lane1_rx_err_cnt_lsb,32 lsb bits of LANE1 RX PRBS Error Counter,
+
+29,16,LANE1_RX_ERR_CNT_MSB,RO,
+,[15:0],lane1_rx_err_cnt_msb,16 msb bits of LANE1 RX PRBS Error Counter,
+
+30,32,LANE2_RX_ERR_CNT_LSB,RO,
+,[31:0],lane2_rx_err_cnt_lsb,32 lsb bits of LANE2 RX PRBS Error Counter,
+
+31,16,LANE2_RX_ERR_CNT_MSB,RO,
+,[15:0],lane2_rx_err_cnt_msb,16 msb bits of LANE2 RX PRBS Error Counter,
+
+32,32,LANE3_RX_ERR_CNT_LSB,RO,
+,[31:0],lane3_rx_err_cnt_lsb,32 lsb bits of LANE3 RX PRBS Error Counter,
+
+33,16,LANE3_RX_ERR_CNT_MSB,RO,
+,[15:0],lane3_rx_err_cnt_msb,16 msb bits of LANE3 RX PRBS Error Counter,
+
+34,32,LANE4_RX_ERR_CNT_LSB,RO,
+,[31:0],lane4_rx_err_cnt_lsb,32 lsb bits of LANE4 RX PRBS Error Counter,
+
+35,16,LANE4_RX_ERR_CNT_MSB,RO,
+,[15:0],lane4_rx_err_cnt_msb,16 msb bits of LANE4 RX PRBS Error Counter,
+
+36,32,LANE5_RX_ERR_CNT_LSB,RO,
+,[31:0],lane5_rx_err_cnt_lsb,32 lsb bits of LANE5 RX PRBS Error Counter,
+
+37,16,LANE5_RX_ERR_CNT_MSB,RO,
+,[15:0],lane5_rx_err_cnt_msb,16 msb bits of LANE5 RX PRBS Error Counter,
+
+38,32,LANE6_RX_ERR_CNT_LSB,RO,
+,[31:0],lane6_rx_err_cnt_lsb,32 lsb bits of LANE6 RX PRBS Error Counter,
+
+39,16,LANE6_RX_ERR_CNT_MSB,RO,
+,[15:0],lane6_rx_err_cnt_msb,16 msb bits of LANE6 RX PRBS Error Counter,
+
+40,32,LANE7_RX_ERR_CNT_LSB,RO,
+,[31:0],lane7_rx_err_cnt_lsb,32 lsb bits of LANE7 RX PRBS Error Counter,
+
+41,16,LANE7_RX_ERR_CNT_MSB,RO,
+,[15:0],lane7_rx_err_cnt_msb,16 msb bits of LANE7 RX PRBS Error Counter,
+
+42,32,RX_ERROR_OR_LOCKED_IN_LANE,RO,
+,[7:0],rx_prbs_error_in_lane,A 1 at any bit position indicates that prbs errors have occurred at the corresponding lane,
+,[15:8],rx_prbs_primed,A 1 at any bit position indicates that the selected LFSR checker is primed for the  corresponding lane,
+,[23:16],rx_nonprbs_error_in_lane,A 1 at any bit position indicates that nonprbs errors have occurred at the corresponding lane,
+,[31:24],rx_nonprbs_locked,Indicates RX NON-PRBS checker has been error-free for RX_LINKACQ_CNT cycles per lane,
+
+43,8,RX_ERR_CNT_RST_0,RW,
+b,[0],rx_err_cnt_rst_0,LANE0 Reset Error Counter-Self_Clears when prbs_err_cnt_rst_ack_n_0 is 0,1'b0
+b,[1],rx_err_cnt_rst_1,LANE1 Reset Error Counter-Self_Clears when prbs_err_cnt_rst_ack_n_1 is 0,1'b0
+b,[2],rx_err_cnt_rst_2,LANE2 Reset Error Counter-Self_Clears when prbs_err_cnt_rst_ack_n_2 is 0,1'b0
+b,[3],rx_err_cnt_rst_3,LANE3 Reset Error Counter-Self_Clears when prbs_err_cnt_rst_ack_n_3 is 0,1'b0
+b,[4],rx_err_cnt_rst_4,LANE4 Reset Error Counter-Self_Clears when prbs_err_cnt_rst_ack_n_4 is 0,1'b0
+b,[5],rx_err_cnt_rst_5,LANE5 Reset Error Counter-Self_Clears when prbs_err_cnt_rst_ack_n_5 is 0,1'b0
+b,[6],rx_err_cnt_rst_6,LANE6 Reset Error Counter-Self_Clears when prbs_err_cnt_rst_ack_n_6 is 0,1'b0
+b,[7],rx_err_cnt_rst_7,LANE7 Reset Error Counter-Self_Clears when prbs_err_cnt_rst_ack_n_7 is 0,1'b0
+
+44,16,RX_LINKACQ_CNT,RW,
+,[15:0],rx_linkacq_cnt,RX pattern checker link acquire count, 16'h00FF
+
+45,32,LANE0_31_TO_0_EN_RX_BIT_DELAY,RW,
+,[31:0],lane0_31_to_0_en_bit_delay,Bit-by-bit Enable Delay for 1st 32 bits of LANE0,32'h0
+
+46,32,LANE0_63_TO_32_EN_RX_BIT_DELAY,RW,
+,[31:0],lane0_63_to_32_en_bit_delay,Bit-by-bit Enable Delay for 2nd 32 bits of LANE0,32'h0
+
+47,16,LANE0_79_TO_64_EN_RX_BIT_DELAY,RW,
+,[15:0],lane0_79_to_64_en_bit_delay,Bit-by-bit Enable Delay for last 16 bits of LANE0,16'h0
+
+48,32,LANE1_31_TO_0_EN_RX_BIT_DELAY,RW,
+,[31:0],lane1_31_to_0_en_bit_delay,Bit-by-bit Enable Delay for 1st 32 bits of LANE1,32'h0
+
+49,32,LANE1_63_TO_32_EN_RX_BIT_DELAY,RW,
+,[31:0],lane1_63_to_32_en_bit_delay,Bit-by-bit Enable Delay for 2nd 32 bits of LANE1,32'h0
+
+50,16,LANE1_79_TO_64_EN_RX_BIT_DELAY,RW,
+,[15:0],lane1_79_to_64_en_bit_delay,Bit-by-bit Enable Delay for last 16 bits of LANE1,16'h0
+
+51,32,LANE2_31_TO_0_EN_RX_BIT_DELAY,RW,
+,[31:0],lane2_31_to_0_en_bit_delay,Bit-by-bit Enable Delay for 1st 32 bits of LANE2,32'h0
+
+52,32,LANE2_63_TO_32_EN_RX_BIT_DELAY,RW,
+,[31:0],lane2_63_to_32_en_bit_delay,Bit-by-bit Enable Delay for 2nd 32 bits of LANE2,32'h0
+
+53,16,LANE2_79_TO_64_EN_RX_BIT_DELAY,RW,
+,[15:0],lane2_79_to_64_en_bit_delay,Bit-by-bit Enable Delay for last 16 bits of LANE2,16'h0
+
+54,32,LANE3_31_TO_0_EN_RX_BIT_DELAY,RW,
+,[31:0],lane3_31_to_0_en_bit_delay,Bit-by-bit Enable Delay for 1st 32 bits of LANE3,32'h0
+
+55,32,LANE3_63_TO_32_EN_RX_BIT_DELAY,RW,
+,[31:0],lane3_63_to_32_en_bit_delay,Bit-by-bit Enable Delay for 2nd 32 bits of LANE3,32'h0
+
+56,16,LANE3_79_TO_64_EN_RX_BIT_DELAY,RW,
+,[15:0],lane3_79_to_64_en_bit_delay,Bit-by-bit Enable Delay for last 16 bits of LANE3,16'h0
+
+57,32,LANE4_31_TO_0_EN_RX_BIT_DELAY,RW,
+,[31:0],lane4_31_to_0_en_bit_delay,Bit-by-bit Enable Delay for 1st 32 bits of LANE4,32'h0
+
+58,32,LANE4_63_TO_32_EN_RX_BIT_DELAY,RW,
+,[31:0],lane4_63_to_32_en_bit_delay,Bit-by-bit Enable Delay for 2nd 32 bits of LANE4,32'h0
+
+59,16,LANE4_79_TO_64_EN_RX_BIT_DELAY,RW,
+,[15:0],lane4_79_to_64_en_bit_delay,Bit-by-bit Enable Delay for last 16 bits of LANE4,16'h0
+
+60,32,LANE5_31_TO_0_EN_RX_BIT_DELAY,RW,
+,[31:0],lane5_31_to_0_en_bit_delay,Bit-by-bit Enable Delay for 1st 32 bits of LANE5,32'h0
+
+61,32,LANE5_63_TO_32_EN_RX_BIT_DELAY,RW,
+,[31:0],lane5_63_to_32_en_bit_delay,Bit-by-bit Enable Delay for 2nd 32 bits of LANE5,32'h0
+
+62,16,LANE5_79_TO_64_EN_RX_BIT_DELAY,RW,
+,[15:0],lane5_79_to_64_en_bit_delay,Bit-by-bit Enable Delay for last 16 bits of LANE5,16'h0
+
+63,32,LANE6_31_TO_0_EN_RX_BIT_DELAY,RW,
+,[31:0],lane6_31_to_0_en_bit_delay,Bit-by-bit Enable Delay for 1st 32 bits of LANE6,32'h0
+
+64,32,LANE6_63_TO_32_EN_RX_BIT_DELAY,RW,
+,[31:0],lane6_63_to_32_en_bit_delay,Bit-by-bit Enable Delay for 2nd 32 bits of LANE6,32'h0
+
+65,16,LANE6_79_TO_64_EN_RX_BIT_DELAY,RW,
+,[15:0],lane6_79_to_64_en_bit_delay,Bit-by-bit Enable Delay for last 16 bits of LANE6,16'h0
+
+66,32,LANE7_31_TO_0_EN_RX_BIT_DELAY,RW,
+,[31:0],lane7_31_to_0_en_bit_delay,Bit-by-bit Enable Delay for 1st 32 bits of LANE7,32'h0
+
+67,32,LANE7_63_TO_32_EN_RX_BIT_DELAY,RW,
+,[31:0],lane7_63_to_32_en_bit_delay,Bit-by-bit Enable Delay for 2nd 32 bits of LANE7,32'h0
+
+68,16,LANE7_79_TO_64_EN_RX_BIT_DELAY,RW,
+,[15:0],lane7_79_to_64_en_bit_delay,Bit-by-bit Enable Delay for last 16 bits of LANE7,16'h0
+
+69,5,RX_DELAY_ETB_CTRL,RW,
+,[0],en_delay_etb,Enable Delay ETB operations - used for clock-gating to save power,1'b0
+,[1],frz_del_etb_pipe,Freeze Delay ETB Pipeline Shift so that Delay ETB Registers can be read out,1'b0
+,[4:2],sel_delay_etb_lane,Pick the lane to be observed,3'b000
+
+70,32,RX_DELAY_ETB_REGOUT,RO,
+,[31:0],rx_delay_etb_regout,32-bit muxed output of all the sub-fields of the lane_delay_etb_regs,
+

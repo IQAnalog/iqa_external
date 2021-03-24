@@ -1,0 +1,45 @@
+0,6,OOB_AXIFACE_CONTROL,RW,
+,[0],sw_rst_n,SOFTWARE RESETn-RISC-V resets FRAMER Only-Chip wakes up with SOFTWARE RESET OFF,1'b1
+,[1],enable_axi_bus_access,Give AXI Access to OOB PROCESSOR-Default 0 so chip wakes up with no OOB AXI Access,1'b0
+,[2],en_num_axi_wr_req_cnt,Enables the num_axi_wr_req_cnt counter.Defaults to 0 to save power.,1'b0
+,[3],en_num_axi_wr_cmplt_cnt,Enables the num_axi_wr_cmplt_cnt counter.Defaults to 0 to save power.,1'b0
+,[4],en_num_axi_rd_req_cnt,Enables the num_axi_rd_req_cnt counter.Defaults to 0 to save power.,1'b0
+,[5],en_num_axi_rd_cmplt_cnt,Enables the num_axi_rd_cmplt_cnt counter.Defaults to 0 to save power.,1'b0
+
+1,13,OOB_AXIFACE_STATUS,RO,
+,[0],axi_write_active,Indicates axi_write is active,
+,[1],axi_read_active,Indicates axi_read is active,
+,[5:2],curr_main_fsm_state,Current MAIN FSM State,
+,[9:6],curr_wrfifo_fsm_state,Current WRFIFO FSM State,
+,[10],axi_write_read_both_on,Indicates both WRITE & READ requests at the same time - this is not allowed,
+,[11],axi_write_when_fifo_full,Indicates a WRITE request while FIFO is FULL - this is not allowed,
+,[12],waiting_4_rd_data_valid_ack,OOB AXIFACE is waiting for an acknowledgment of RD_DATA_VALID that it sent to the OOB PROCESSOR,
+
+2,10,AXI_BUS_STATUS,RO,
+,[0],aw_valid,AXI BUS aw_valid,
+,[1],aw_ready,AXI BUS aw_ready,
+,[2],w_valid,AXI BUS w_valid,
+,[3],w_ready,AXI BUS w_ready,
+,[4],ar_valid,AXI BUS ar_valid,
+,[5],ar_ready,AXI BUS ar_ready,
+,[6],r_valid,AXI BUS r_valid,
+,[7],r_ready,AXI BUS r_ready,
+,[8],b_valid,AXI BUS b_valid,
+,[9],b_ready,AXI BUS b_ready,
+
+3,32,NUM_AXI_WRITE_REQUESTS_AND_COMPLETION,RO,
+,[15:0],num_axi_wr_req_cnt,Number of axi_write requests if en_num_axi_wr_req_cnt is 1, 
+,[31:16],num_axi_wr_cmplt_cnt,Number of completed axi_writes if en_num_axi_wr_cmplt_cnt is 1,
+
+4,32,NUM_AXI_READ_REQUESTS_AND_COMPLETION,RO,
+,[15:0],num_axi_rd_req_cnt,Number of axi_read requests if en_num_axi_rd_req_cnt is 1,
+,[31:16],num_axi_rd_cmplt_cnt,Number of completed axi_reads if en_num_axi_rd_cmplt_cnt is 1,
+
+5,9,WRITE_FIFO_SIGNALS,RO,
+,[0],axi_wr_fifo_full,AXI BUS WRITE FIFO is FULL,
+,[1],axi_wr_fifo_overflow,AXI BUS WRITE FIFO OVERFLOW,
+,[2],axi_wr_fifo_empty,AXI BUS WRITE FIFO is EMPTY,
+,[3],axi_wr_fifo_underflow,AXI BUS WRITE FIFO UNDERFLOW,
+,[6:4],write_fifo_counter,Number of entries in the WRITE FIFO,
+,[7],push_write_fifo,Enables WRITE into the WRITE FIFO,
+,[8],pop_write_fifo,Enables READ from the WRITE FIFO,

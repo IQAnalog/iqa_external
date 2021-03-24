@@ -1,0 +1,180 @@
+0,8,TX_P2S_RESET_CTRL,RW,
+,[0],lane0_rst_n,Software reset (lane 0),1'b1
+,[1],lane1_rst_n,Software reset (lane 1),1'b1
+,[2],lane2_rst_n,Software reset (lane 2),1'b1
+,[3],lane3_rst_n,Software reset (lane 3),1'b1
+,[4],lane4_rst_n,Software reset (lane 4),1'b1
+,[5],lane5_rst_n,Software reset (lane 5),1'b1
+,[6],lane6_rst_n,Software reset (lane 6),1'b1
+,[7],lane7_rst_n,Software reset (lane 7),1'b1
+
+1,2,TX_P2S_MODE_CTRL,RW,
+,[0],output_mode,Select between SDR and DDR modes:<BR>0: SDR (default)<BR>1: DDR,1'b0
+,[1],load_rst_n,Software reset for the input data synchronization (all lanes).,1'b1
+
+2,10,TX_P2S_LOAD_SDR,RW,
+,[9:0],load_sdr,Data synchronization pulse control (SDR mode).,10'b1000000000
+
+3,10,TX_P2S_LOAD_DDR,RW,
+,[9:0],load_ddr,Data synchronization pulse control (DDR mode).,10'b1000010000
+
+4,16,TX_P2S_LANE0_CTRL,RW,
+,[0],lane0_d_pol,Input data polarity (lane 0),1'b0
+,[1],lane0_clk_pol,Output clock polarity (lane 0),1'b0
+,[2],lane0_pp_pol,Positive pre-enphasis polarity (lane 0),1'b0
+,[3],lane0_pm_pol,Output clock polarity (lane 0),1'b0
+,[8:4],lane0_dp_ctrl,Positive pre-emphasis control (lane 0).,5'b00000
+,[13:9],lane0_dm_ctrl,Negative pre-emphasis control (lane 0).,5'b00000
+,[14],lane0_zp_pol,p-side impedance polarity (lane 0),1'b0
+,[15],lane0_zm_pol,n-side impedance polarity (lane 0),1'b0
+
+5,16,TX_P2S_LANE1_CTRL,RW,
+,[0],lane1_d_pol,Input data polarity (lane 1),1'b0
+,[1],lane1_clk_pol,Output clock polarity (lane 1),1'b0
+,[2],lane1_pp_pol,Positive pre-enphasis polarity (lane 1),1'b0
+,[3],lane1_pm_pol,Negative pre-enphasis polarity (lane 1),1'b0
+,[8:4],lane1_dp_ctrl,Positive pre-emphasis control (lane 1).,5'b00000
+,[13:9],lane1_dm_ctrl,Negative pre-emphasis control (lane 1).,5'b00000
+,[14],lane1_zp_pol,p-side impedance polarity (lane 1),1'b0
+,[15],lane1_zm_pol,n-side impedance polarity (lane 1),1'b0
+
+6,16,TX_P2S_LANE2_CTRL,RW,
+,[0],lane2_d_pol,Input data polarity (lane 2),1'b0
+,[1],lane2_clk_pol,Output clock polarity (lane 2),1'b0
+,[2],lane2_pp_pol,Positive pre-enphasis polarity (lane 2),1'b0
+,[3],lane2_pm_pol,Negative pre-enphasis polarity (lane 2),1'b0
+,[8:4],lane2_dp_ctrl,Positive pre-emphasis control (lane 2).,5'b00000
+,[13:9],lane2_dm_ctrl,Negative pre-emphasis control (lane 2).,5'b00000
+,[14],lane2_zp_pol,p-side impedance polarity (lane 2),1'b0
+,[15],lane2_zm_pol,n-side impedance polarity (lane 2),1'b0
+
+7,16,TX_P2S_LANE3_CTRL,RW,
+,[0],lane3_d_pol,Input data polarity (lane 3),1'b0
+,[1],lane3_clk_pol,Output clock polarity (lane 3),1'b0
+,[2],lane3_pp_pol,Positive pre-enphasis polarity (lane 3),1'b0
+,[3],lane3_pm_pol,Negative pre-enphasis polarity (lane 3),1'b0
+,[8:4],lane3_dp_ctrl,Positive pre-emphasis control (lane 3).,5'b00000
+,[13:9],lane3_dm_ctrl,Negative pre-emphasis control (lane 3).,5'b00000
+,[14],lane3_zp_pol,p-side impedance polarity (lane 3),1'b0
+,[15],lane3_zm_pol,n-side impedance polarity (lane 3),1'b0
+
+8,16,TX_P2S_LANE4_CTRL,RW,
+,[0],lane4_d_pol,Input data polarity (lane 4),1'b0
+,[1],lane4_clk_pol,Output clock polarity (lane 4),1'b0
+,[2],lane4_pp_pol,Positive pre-enphasis polarity (lane 4),1'b0
+,[3],lane4_pm_pol,Negative pre-enphasis polarity (lane 4),1'b0
+,[8:4],lane4_dp_ctrl,Positive pre-emphasis control (lane 4).,5'b00000
+,[13:9],lane4_dm_ctrl,Negative pre-emphasis control (lane 4).,5'b00000
+,[14],lane4_zp_pol,p-side impedance polarity (lane 4),1'b0
+,[15],lane4_zm_pol,n-side impedance polarity (lane 4),1'b0
+
+9,16,TX_P2S_LANE5_CTRL,RW,
+,[0],lane5_d_pol,Input data polarity (lane 5),1'b0
+,[1],lane5_clk_pol,Output clock polarity (lane 5),1'b0
+,[2],lane5_pp_pol,Positive pre-enphasis polarity (lane 5),1'b0
+,[3],lane5_pm_pol,Negative pre-enphasis polarity (lane 5),1'b0
+,[8:4],lane5_dp_ctrl,Positive pre-emphasis control (lane 5).,5'b00000
+,[13:9],lane5_dm_ctrl,Negative pre-emphasis control (lane 5).,5'b00000
+,[14],lane5_zp_pol,p-side impedance polarity (lane 5),1'b0
+,[15],lane5_zm_pol,n-side impedance polarity (lane 5),1'b0
+
+10,16,TX_P2S_LANE6_CTRL,RW,
+,[0],lane6_d_pol,Input data polarity (lane 6),1'b0
+,[1],lane6_clk_pol,Output clock polarity (lane 6),1'b0
+,[2],lane6_pp_pol,Positive pre-enphasis polarity (lane 6),1'b0
+,[3],lane6_pm_pol,Negative pre-enphasis polarity (lane 6),1'b0
+,[8:4],lane6_dp_ctrl,Positive pre-emphasis control (lane 6).,5'b00000
+,[13:9],lane6_dm_ctrl,Negative pre-emphasis control (lane 6).,5'b00000
+,[14],lane6_zp_pol,p-side impedance polarity (lane 6),1'b0
+,[15],lane6_zm_pol,n-side impedance polarity (lane 6),1'b0
+
+11,16,TX_P2S_LANE7_CTRL,RW,
+,[0],lane7_d_pol,Input data polarity (lane 7),1'b0
+,[1],lane7_clk_pol,Output clock polarity (lane 7),1'b0
+,[2],lane7_pp_pol,Positive pre-enphasis polarity (lane 7),1'b0
+,[3],lane7_pm_pol,Negative pre-enphasis polarity (lane 7),1'b0
+,[8:4],lane7_dp_ctrl,Positive pre-emphasis control (lane 7).,5'b00000
+,[13:9],lane7_dm_ctrl,Negative pre-emphasis control (lane 7).,5'b00000
+,[14],lane7_zp_pol,p-side impedance polarity (lane 7),1'b0
+,[15],lane7_zm_pol,n-side impedance polarity (lane 7),1'b0
+
+12,11,TX_P2S_DTEST,RW,
+,[0],p2s_test,Test mode for data path.,1'b0
+,[10:1],d_test,Data for test mode.,10'b0000000000
+
+13,10,TX_P2S_PPTEST,RW,
+,[9:0],pp_test,Positive pre-emphasis data for test mode.,10'b0000000000
+
+14,10,TX_P2S_PMTEST,RW,
+,[9:0],pm_test,Negative pre-emphasis data for test mode.,10'b0000000000
+
+15,16,TX_ZCAL_CTRL,RW,
+,[0],z_en,Impedance calibration enable.,1'b0
+,[4:1],clk_div,Impedance calibration clock divider.,4'b1010
+,[9:5],zp_min,Minimum number of p-side drivers.,5'b00100
+,[14:10],zm_min,Minimum number of n-side drivers.,5'b00100
+,[15],z_background_enable,Enable background impedance calibration.,1'b0
+
+16,4,TX_ZCAL_FREEZE,RW,
+,[0],z_freeze,Impedance calibration freeze.,1'b0
+,[2:1],z_freeze_state,Select the freeze state.,2'b00
+,[3],z_restart,Reset the calibration engine.,1'b0
+
+17,10,TX_ZCAL_OFFSET,RW,
+,[4:0],zp_offset,Impedance calibration offset.,5'b00000
+,[9:5],zm_offset,Impedance calibration offset.,5'b00000
+
+18,10,TX_ZCAL_LANE0_OFFSET,RW,
+,[4:0],lane0_zp_offset,Impedance calibration offset (lane 0).,5'b00000
+,[9:5],lane0_zm_offset,Impedance calibration offset (lane 0).,5'b00000
+
+19,10,TX_ZCAL_LANE1_OFFSET,RW,
+,[4:0],lane1_zp_offset,Impedance calibration offset (lane 1).,5'b00000
+,[9:5],lane1_zm_offset,Impedance calibration offset (lane 1).,5'b00000
+
+20,10,TX_ZCAL_LANE2_OFFSET,RW,
+,[4:0],lane2_zp_offset,Impedance calibration offset (lane 2).,5'b00000
+,[9:5],lane2_zm_offset,Impedance calibration offset (lane 2).,5'b00000
+
+21,10,TX_ZCAL_LANE3_OFFSET,RW,
+,[4:0],lane3_zp_offset,Impedance calibration offset (lane 3).,5'b00000
+,[9:5],lane3_zm_offset,Impedance calibration offset (lane 3).,5'b00000
+
+22,10,TX_ZCAL_LANE4_OFFSET,RW,
+,[4:0],lane4_zp_offset,Impedance calibration offset (lane 4).,5'b00000
+,[9:5],lane4_zm_offset,Impedance calibration offset (lane 4).,5'b00000
+
+23,10,TX_ZCAL_LANE5_OFFSET,RW,
+,[4:0],lane5_zp_offset,Impedance calibration offset (lane 5).,5'b00000
+,[9:5],lane5_zm_offset,Impedance calibration offset (lane 5).,5'b00000
+
+24,10,TX_ZCAL_LANE6_OFFSET,RW,
+,[4:0],lane6_zp_offset,Impedance calibration offset (lane 6).,5'b00000
+,[9:5],lane6_zm_offset,Impedance calibration offset (lane 6).,5'b00000
+
+25,10,TX_ZCAL_LANE7_OFFSET,RW,
+,[4:0],lane7_zp_offset,Impedance calibration offset (lane 7).,5'b00000
+,[9:5],lane7_zm_offset,Impedance calibration offset (lane 7).,5'b00000
+
+26,12,TX_ZCAL_TEST,RW,
+,[0],z_test_txc,Impedance calibration test mode for TXC.,1'b0
+,[1],z_test_p2s,Impedance calibration test mode for TXC.,1'b0
+,[6:2],zp_test,Impedance calibration.,5'b00000
+,[11:7],zm_test,Impedance calibration.,5'b00000
+
+27,12,TX_ZCAL_STATUS,RO,
+,[4:0],zp_cal_reg,Impedance calibration output from FSM (p-side).,
+,[9:5],zm_cal_reg,Impedance calibration output from FSM (m-side).,
+,[10],comp_out,Comparator's output.,
+,[11],zcal_done,Impedance calibration done.,
+
+28,26,TX_TXC_CTRL,RW,
+,[0],clk_en,Enable the clock receiver for the TX PHY.,1'b0
+,[1],clk_mode,Character clock mode<BR> 0: SDR<BR> 1: DDR,1'b0
+,[2],ref_enable,Enable TXC reference generator.,1'b0
+,[5:3],vcm_select,Select the common-mode feedback signal from the TXLs.,3'b000
+,[8:6],ref_select,Set the common-mode voltage:<BR>000: 840mV<BR>001: 820mV<BR>010: 800mV<BR>011: 780mV<BR>100: 760mV<BR>101: 740mV<BR>110: 720mV<BR>111: 700mV,3'b100
+,[9],ref_local,Use the TXC reference to set the TXL common-mode.,1'b0
+,[17:10],vcm,Common Mode Voltage extra control bits.,8'h00
+,[25:18],clk_line_en,Line clock enable bit per lane.,8'hFF
+

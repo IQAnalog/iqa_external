@@ -1,0 +1,193 @@
+1,8,RX_CDR_RESET_CTRL,RW,
+,[0],lane0_rst_n,Software reset (lane 0),1'b1
+,[1],lane1_rst_n,Software reset (lane 1),1'b1
+,[2],lane2_rst_n,Software reset (lane 2),1'b1
+,[3],lane3_rst_n,Software reset (lane 3),1'b1
+,[4],lane4_rst_n,Software reset (lane 4),1'b1
+,[5],lane5_rst_n,Software reset (lane 5),1'b1
+,[6],lane6_rst_n,Software reset (lane 6),1'b1
+,[7],lane7_rst_n,Software reset (lane 7),1'b1
+
+2,8,RX_CDR_CLK_POLARITY,RW,
+,[0],lane0_clk_polarity,Input clock polarity (lane 0),1'b1
+,[1],lane1_clk_polarity,Input clock polarity (lane 1),1'b1
+,[2],lane2_clk_polarity,Input clock polarity (lane 2),1'b1
+,[3],lane3_clk_polarity,Input clock polarity (lane 3),1'b1
+,[4],lane4_clk_polarity,Input clock polarity (lane 4),1'b1
+,[5],lane5_clk_polarity,Input clock polarity (lane 5),1'b1
+,[6],lane6_clk_polarity,Input clock polarity (lane 6),1'b1
+,[7],lane7_clk_polarity,Input clock polarity (lane 7),1'b1
+
+3,8,RX_CDR_HFBOOST_LANE0,RW,
+,[7:0],lane0_hfboost,High frequency gain boost control (lane 0),8'b10000000
+
+4,8,RX_CDR_HFBOOST_LANE1,RW,
+,[7:0],lane1_hfboost,High frequency gain boost control (lane 1),8'b10000000
+
+5,8,RX_CDR_HFBOOST_LANE2,RW,
+,[7:0],lane2_hfboost,High frequency gain boost control (lane 2),8'b10000000
+
+6,8,RX_CDR_HFBOOST_LANE3,RW,
+,[7:0],lane3_hfboost,High frequency gain boost control (lane 3),8'b10000000
+
+7,8,RX_CDR_HFBOOST_LANE4,RW,
+,[7:0],lane4_hfboost,High frequency gain boost control (lane 4),8'b10000000
+
+8,8,RX_CDR_HFBOOST_LANE5,RW,
+,[7:0],lane5_hfboost,High frequency gain boost control (lane 5),8'b10000000
+
+9,8,RX_CDR_HFBOOST_LANE6,RW,
+,[7:0],lane6_hfboost,High frequency gain boost control (lane 6),8'b10000000
+
+10,8,RX_CDR_HFBOOST_LANE7,RW,
+,[7:0],lane7_hfboost,High frequency gain boost control (lane 7),8'b10000000
+
+11,12,RX_CDR_PD_LANE0,RO,
+,[11:0],lane0_pd,Phase detector output of CDR (lane 0),
+
+12,12,RX_CDR_PD_LANE1,RO,
+,[11:0],lane1_pd,Phase detector output of CDR (lane 1),
+
+13,12,RX_CDR_PD_LANE2,RO,
+,[11:0],lane2_pd,Phase detector output of CDR (lane 2),
+
+14,12,RX_CDR_PD_LANE3,RO,
+,[11:0],lane3_pd,Phase detector output of CDR (lane 3),
+
+15,12,RX_CDR_PD_LANE4,RO,
+,[11:0],lane4_pd,Phase detector output of CDR (lane 4),
+
+16,12,RX_CDR_PD_LANE5,RO,
+,[11:0],lane5_pd,Phase detector output of CDR (lane 5),
+
+17,12,RX_CDR_PD_LANE6,RO,
+,[11:0],lane6_pd,Phase detector output of CDR (lane 6),
+
+18,12,RX_CDR_PD_LANE7,RO,
+,[11:0],lane7_pd,Phase detector output of CDR (lane 7),
+
+19,18,RX_CDR_FILT_LANE0,RO,
+,[17:0],lane0_filt,Filter output of CDR (lane 0),
+
+20,18,RX_CDR_FILT_LANE1,RO,
+,[17:0],lane1_filt,Filter output of CDR (lane 1),
+
+21,18,RX_CDR_FILT_LANE2,RO,
+,[17:0],lane2_filt,Filter output of CDR (lane 2),
+
+22,18,RX_CDR_FILT_LANE3,RO,
+,[17:0],lane3_filt,Filter output of CDR (lane 3),
+
+23,18,RX_CDR_FILT_LANE4,RO,
+,[17:0],lane4_filt,Filter output of CDR (lane 4),
+
+24,18,RX_CDR_FILT_LANE5,RO,
+,[17:0],lane5_filt,Filter output of CDR (lane 5),
+
+25,18,RX_CDR_FILT_LANE6,RO,
+,[17:0],lane6_filt,Filter output of CDR (lane 6),
+
+26,18,RX_CDR_FILT_LANE7,RO,
+,[17:0],lane7_filt,Filter output of CDR (lane 7),
+
+27,4,RX_CDR_FLEX_FIFO_STATE_LANE0,RO,
+,[3:0],lane0_flex_fifo_state,Flex fifo state of CDR (lane 0),
+
+28,4,RX_CDR_FLEX_FIFO_STATE_LANE1,RO,
+,[3:0],lane1_flex_fifo_state,Flex fifo state of CDR (lane 1),
+
+29,4,RX_CDR_FLEX_FIFO_STATE_LANE2,RO,
+,[3:0],lane2_flex_fifo_state,Flex fifo state of CDR (lane 2),
+
+30,4,RX_CDR_FLEX_FIFO_STATE_LANE3,RO,
+,[3:0],lane3_flex_fifo_state,Flex fifo state of CDR (lane 3),
+
+31,4,RX_CDR_FLEX_FIFO_STATE_LANE4,RO,
+,[3:0],lane4_flex_fifo_state,Flex fifo state of CDR (lane 4),
+
+32,4,RX_CDR_FLEX_FIFO_STATE_LANE5,RO,
+,[3:0],lane5_flex_fifo_state,Flex fifo state of CDR (lane 5),
+
+33,4,RX_CDR_FLEX_FIFO_STATE_LANE6,RO,
+,[3:0],lane6_flex_fifo_state,Flex fifo state of CDR (lane 6),
+
+34,4,RX_CDR_FLEX_FIFO_STATE_LANE7,RO,
+,[3:0],lane7_flex_fifo_state,Flex fifo state of CDR (lane 7),
+
+35,8,RX_CDR_MODE,RW,
+,[0],lane0_mode,Control for SDR/DDR mode(lane 0):<BR>1-SDR<BR>0-DDR,1'b0
+,[1],lane1_mode,Control for SDR/DDR mode(lane 1):<BR>1-SDR<BR>0-DDR,1'b0
+,[2],lane2_mode,Control for SDR/DDR mode(lane 2):<BR>1-SDR<BR>0-DDR,1'b0
+,[3],lane3_mode,Control for SDR/DDR mode(lane 3):<BR>1-SDR<BR>0-DDR,1'b0
+,[4],lane4_mode,Control for SDR/DDR mode(lane 4):<BR>1-SDR<BR>0-DDR,1'b0
+,[5],lane5_mode,Control for SDR/DDR mode(lane 5):<BR>1-SDR<BR>0-DDR,1'b0
+,[6],lane6_mode,Control for SDR/DDR mode(lane 6):<BR>1-SDR<BR>0-DDR,1'b0
+,[7],lane7_mode,Control for SDR/DDR mode(lane 7):<BR>1-SDR<BR>0-DDR,1'b0
+
+36,8,RX_CDR_SDR_MODE,RW,
+,[0],lane0_sdr_mode,Control for DDR->SDR downsample with even/odd bits(lane 0):<BR>1-even<BR>0-odd,1'b0
+,[1],lane1_sdr_mode,Control for DDR->SDR downsample with even/odd bits(lane 1):<BR>1-even<BR>0-odd,1'b0
+,[2],lane2_sdr_mode,Control for DDR->SDR downsample with even/odd bits(lane 2):<BR>1-even<BR>0-odd,1'b0
+,[3],lane3_sdr_mode,Control for DDR->SDR downsample with even/odd bits(lane 3):<BR>1-even<BR>0-odd,1'b0
+,[4],lane4_sdr_mode,Control for DDR->SDR downsample with even/odd bits(lane 4):<BR>1-even<BR>0-odd,1'b0
+,[5],lane5_sdr_mode,Control for DDR->SDR downsample with even/odd bits(lane 5):<BR>1-even<BR>0-odd,1'b0
+,[6],lane6_sdr_mode,Control for DDR->SDR downsample with even/odd bits(lane 6):<BR>1-even<BR>0-odd,1'b0
+,[7],lane7_sdr_mode,Control for DDR->SDR downsample with even/odd bits(lane 7):<BR>1-even<BR>0-odd,1'b0
+
+37,10,RX_CDR_AMP_BIAS_LANE0,RW,
+,[2:0],lane0_ctrl_amp_int,Int res bias control for rx amp,3'b100
+,[5:3],lane0_ctrl_term_ext,Ext res bias control for term circuit,3'b100
+,[8:6],lane0_ctrl_term_int,Int res bias control for term circuit,3'b100
+,[9],lane0_sel_2v5,Set control to: 0 - 2p5V<BR>1 - 1p8V,1'b0
+
+38,10,RX_CDR_AMP_BIAS_LANE1,RW,
+,[2:0],lane1_ctrl_amp_int,Int res bias control for rx amp,3'b100
+,[5:3],lane1_ctrl_term_ext,Ext res bias control for term circuit,3'b100
+,[8:6],lane1_ctrl_term_int,Int res bias control for term circuit,3'b100
+,[9],lane1_sel_2v5,Set control to: 0 - 2p5V<BR>1 - 1p8V,1'b0
+
+39,10,RX_CDR_AMP_BIAS_LANE2,RW,
+,[2:0],lane2_ctrl_amp_int,Int res bias control for rx amp,3'b100
+,[5:3],lane2_ctrl_term_ext,Ext res bias control for term circuit,3'b100
+,[8:6],lane2_ctrl_term_int,Int res bias control for term circuit,3'b100
+,[9],lane2_sel_2v5,Set control to: 0 - 2p5V<BR>1 - 1p8V,1'b0
+
+40,10,RX_CDR_AMP_BIAS_LANE3,RW,
+,[2:0],lane3_ctrl_amp_int,Int res bias control for rx amp,3'b100
+,[5:3],lane3_ctrl_term_ext,Ext res bias control for term circuit,3'b100
+,[8:6],lane3_ctrl_term_int,Int res bias control for term circuit,3'b100
+,[9],lane3_sel_2v5,Set control to: 0 - 2p5V<BR>1 - 1p8V,1'b0
+
+41,10,RX_CDR_AMP_BIAS_LANE4,RW,
+,[2:0],lane4_ctrl_amp_int,Int res bias control for rx amp,3'b100
+,[5:3],lane4_ctrl_term_ext,Ext res bias control for term circuit,3'b100
+,[8:6],lane4_ctrl_term_int,Int res bias control for term circuit,3'b100
+,[9],lane4_sel_2v5,Set control to: 0 - 2p5V<BR>1 - 1p8V,1'b0
+
+42,10,RX_CDR_AMP_BIAS_LANE5,RW,
+,[2:0],lane5_ctrl_amp_int,Int res bias control for rx amp,3'b100
+,[5:3],lane5_ctrl_term_ext,Ext res bias control for term circuit,3'b100
+,[8:6],lane5_ctrl_term_int,Int res bias control for term circuit,3'b100
+,[9],lane5_sel_2v5,Set control to: 0 - 2p5V<BR>1 - 1p8V,1'b0
+
+43,10,RX_CDR_AMP_BIAS_LANE6,RW,
+,[2:0],lane6_ctrl_amp_int,Int res bias control for rx amp,3'b100
+,[5:3],lane6_ctrl_term_ext,Ext res bias control for term circuit,3'b100
+,[8:6],lane6_ctrl_term_int,Int res bias control for term circuit,3'b100
+,[9],lane6_sel_2v5,Set control to: 0 - 2p5V<BR>1 - 1p8V,1'b0
+
+44,10,RX_CDR_AMP_BIAS_LANE7,RW,
+,[2:0],lane7_ctrl_amp_int,Int res bias control for rx amp,3'b100
+,[5:3],lane7_ctrl_term_ext,Ext res bias control for term circuit,3'b100
+,[8:6],lane7_ctrl_term_int,Int res bias control for term circuit,3'b100
+,[9],lane7_sel_2v5,Set control to: 0 - 2p5V<BR>1 - 1p8V,1'b0
+
+45,8,RX_CDR_LANE_EN,RW,
+,[0],lane0_en,Lane0 bias enable,1'b1
+,[1],lane1_en,Lane1 bias enable,1'b1
+,[2],lane2_en,Lane2 bias enable,1'b1
+,[3],lane3_en,Lane3 bias enable,1'b1
+,[4],lane4_en,Lane4 bias enable,1'b1
+,[5],lane5_en,Lane5 bias enable,1'b1
+,[6],lane6_en,Lane6 bias enable,1'b1
+,[7],lane7_en,Lane7 bias enable,1'b1

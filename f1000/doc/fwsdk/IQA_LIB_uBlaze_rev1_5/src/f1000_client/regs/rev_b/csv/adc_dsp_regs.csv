@@ -1,0 +1,140 @@
+0,23,GLOBAL_CONFIGURATION,RW,
+,[1:0],sample_num,00: 64 samples; 01: 32 samples; 10: 16 samples; 11: 8 samples; ,2'b00
+,[2],test_mode,enable test mode,1'b0
+,[3],loopback,loopback mode from dac to adc during test mode,1'b0
+,[4],debug_bus_en,enable memory capture during test mode for band1 datapath only,1'b0
+,[10:5],in_sample_db_sel,0: the first input sample; 1: the second input samples; .... 63: the 64th input samples; ,6'b000000
+,[15:11],out_sample_db_sel,0: the first output samples; 1: the second output samples; .... 31: the 32th output samples; ,5'b00000
+,[18:16],db_mux_sel,0: the first satge input/output; 1: the second stage input/output; .... 7: the 8th stage input/output; ,3'b000
+,[19],bypass_cm,1: During 0.25GS/s mode: I2/I3 and Q2/Q3 will be provided 0.5GS/s raw data to serdes,1'b0
+,[20],ddc_bypass,1: 1: bypass ddc function 0: disable bypass,1'b0
+,[21],ddc_bypass_par,1: 1: inverted data 0: raw data,1'b0
+,[22],db_band_sel,1: band2 debug bus mode 0: band1 debug mode,1'b0
+
+1,12,BAND1_CONFIGURATION,RW,
+,[3:0],band1_out_scaler,4 bits signed value from 7 to -8 as a scale factor; ,4'b0000
+,[4],band1_en,enable adc dap band1,1'b0
+,[8:5],band1_rate_mode,0000: 0.25GS/s; 0001: 0.5GS/s; 0010: 1GS/s; 0011: 2GS/s; 0100: 4GS/s,4'b0000
+,[11:9],band1_freq_sel,000: freq1; 001: freq2; 010: freq3; 011: freq4; 100: freq5; 101: freq6; 110: freq7; 111: freq8,3'b000
+
+2,12,BAND2_CONFIGURATION,RW,
+,[3:0],band2_out_scaler,4 bits signed value from 7 to -8 as a scale factor; ,4'b0000
+,[4],band2_en,enable adc dap band2,1'b0
+,[8:5],band2_rate_mode,0000: 0.25GS/s; 0001: 0.5GS/s; 0010: 1GS/s; 0011: 2GS/s; 0100: 4GS/s,4'b0000
+,[11:9],band2_freq_sel,000: freq1; 001: freq2; 010: freq3; 011: freq4; 100: freq5; 101: freq6; 110: freq7; 111: freq8,3'b000
+
+3,32,BAND1_FREQUENCY1,RW,
+,[31:0],band1_freq1,Band1 frequency1,32'h00000000
+
+4,32,BAND2_FREQUENCY1,RW,
+,[31:0],band2_freq1,Band2 frequency1,32'h00000000
+
+5,32,BAND1_FREQUENCY2,RW,
+,[31:0],band1_freq2,Band1 frequency2,32'h00000000
+
+6,32,BAND2_FREQUENCY2,RW,
+,[31:0],band2_freq2,Band2 frequency2,32'h00000000
+
+7,32,BAND1_FREQUENCY3,RW,
+,[31:0],band1_freq3,Band1 frequency3,32'h00000000
+
+8,32,BAND2_FREQUENCY3,RW,
+,[31:0],band2_freq3,Band2 frequency3,32'h00000000
+
+9,32,BAND1_FREQUENCY4,RW,
+,[31:0],band1_freq4,Band1 frequency4,32'h00000000
+
+10,32,BAND2_FREQUENCY4,RW,
+,[31:0],band2_freq4,Band2 frequency4,32'h00000000
+
+11,32,BAND1_FREQUENCY5,RW,
+,[31:0],band1_freq5,Band1 frequency5,32'h00000000
+
+12,32,BAND2_FREQUENCY5,RW,
+,[31:0],band2_freq5,Band2 frequency5,32'h00000000
+
+13,32,BAND1_FREQUENCY6,RW,
+,[31:0],band1_freq6,Band1 frequency6,32'h00000000
+
+14,32,BAND2_FREQUENCY6,RW,
+,[31:0],band2_freq6,Band2 frequency6,32'h00000000
+
+15,32,BAND1_FREQUENCY7,RW,
+,[31:0],band1_freq7,Band1 frequency7,32'h00000000
+
+16,32,BAND2_FREQUENCY7,RW,
+,[31:0],band2_freq7,Band2 frequency7,32'h00000000
+
+17,32,BAND1_FREQUENCY8,RW,
+,[31:0],band1_freq8,Band1 frequency8,32'h00000000
+
+18,32,BAND2_FREQUENCY8,RW,
+,[31:0],band2_freq8,Band2 frequency8,32'h00000000
+
+19,32,BAND1_INITIAL_PHASE1,RW,
+,[31:0],band1_init_phase1,Band1 initial phase1,32'h00000000
+
+20,32,BAND2_INITIAL_PHASE1,RW,
+,[31:0],band2_init_phase1,Band2 initial phase1,32'h00000000
+
+21,32,BAND1_INITIAL_PHASE2,RW,
+,[31:0],band1_init_phase2,Band1 initial phase2,32'h00000000
+
+22,32,BAND2_INITIAL_PHASE2,RW,
+,[31:0],band2_init_phase2,Band2 initial phase2,32'h00000000
+
+23,32,BAND1_INITIAL_PHASE3,RW,
+,[31:0],band1_init_phase3,Band1 initial phase3,32'h00000000
+
+24,32,BAND2_INITIAL_PHASE3,RW,
+,[31:0],band2_init_phase3,Band2 initial phase3,32'h00000000
+
+25,32,BAND1_INITIAL_PHASE4,RW,
+,[31:0],band1_init_phase4,Band1 initial phase4,32'h00000000
+
+26,32,BAND2_INITIAL_PHASE4,RW,
+,[31:0],band2_init_phase4,Band2 initial phase4,32'h00000000
+
+27,32,BAND1_INITIAL_PHASE5,RW,
+,[31:0],band1_init_phase5,Band1 initial phase5,32'h00000000
+
+28,32,BAND2_INITIAL_PHASE5,RW,
+,[31:0],band2_init_phase5,Band2 initial phase5,32'h00000000
+
+29,32,BAND1_INITIAL_PHASE6,RW,
+,[31:0],band1_init_phase6,Band1 initial phase6,32'h00000000
+
+30,32,BAND2_INITIAL_PHASE6,RW,
+,[31:0],band2_init_phase6,Band2 initial phase6,32'h00000000
+
+31,32,BAND1_INITIAL_PHASE7,RW,
+,[31:0],band1_init_phase7,Band1 initial phase7,32'h00000000
+
+32,32,BAND2_INITIAL_PHASE7,RW,
+,[31:0],band2_init_phase7,Band2 initial phase7,32'h00000000
+
+33,32,BAND1_INITIAL_PHASE8,RW,
+,[31:0],band1_init_phase8,Band1 initial phase8,32'h00000000
+
+34,32,BAND2_INITIAL_PHASE8,RW,
+,[31:0],band2_init_phase8,Band2 initial phase8,32'h00000000
+
+35,1,BAND1_STATUS,RO,
+,[0],band1_used, BAND1 is activated,1'b0
+
+36,1,BAND2_STATUS,RO,
+,[0],band2_used, BAND2 is activated,1'b0
+
+37,13,BAND1_TEST_CONFIGURATION,RW,
+,[0],band1_a_dit_en,Band1 enable ditter,1'b1
+,[1],band1_sin_phase,0:sin; 1:-sin,1'b0
+,[10:2],band1_seed,seed for random number generation,9'b010010010
+,[11],band1_samp_hcycle,During 0.5GS/s rate 0: sampled data at first cycle 1: sampled data at second cycle,1'b0
+,[12],band1_samp_qcycle,During 0.25GS/s rate 0: sampled data at second cycle 1: sampled data at fourth cycle,1'b0
+
+38,13,BAND2_TEST_CONFIGURATION,RW,
+,[0],band2_a_dit_en,Band2 enable ditter,1'b1
+,[1],band2_sin_phase,0:sin; 1:-sin,1'b0
+,[10:2],band2_seed,seed for random number generation,9'b101101101
+,[11],band2_samp_hcycle,During 0.5GS/s rate 0: sampled data at first cycle 1: sampled data at second cycle,1'b0
+,[12],band2_samp_qcycle,During 0.25GS/s rate 0: sampled data at second cycle 1: sampled data at fourth cycle,1'b0

@@ -1,0 +1,70 @@
+0,16,EVM_ID,RO,
+,[15:0],evm_id,EVM ID. This should read back as 0xF1000.,
+
+1,16,EVM_REV,RO,
+,[15:0],evm_rev,EVM Revision Code. This should read back as 0x0001.,
+
+2,1,EP_SELECT,RO,
+,[0],ep_select,Element Processor selection:<BR>0: EP_A<BR>1: EP_B,
+
+16,8,I2C_DEV_ADDR,RW,
+,[7:0],i2c_dev,I2C Bus Device number for I2C transaction (shifted 8-bit representation).,8'h0
+
+17,8,I2C_WR_CONTROL,RW,
+,[7:0],i2c_wr_byte_count,Number of bytes to write during I2C write or read.,8'h0
+
+18,8,I2C_RD_CONTROL,RW,
+,[7:0],i2c_rd_byte_count,Number of bytes to read during I2C read.,8'h0
+
+19,4,I2C_CMD,RW,
+,[0],i2c_cmd_wr,I2C Write transaction command bit.,1'b0
+,[1],i2c_cmd_rd,I2C Write transaction command bit.,1'b0
+,[2],i2c_rd_restart,For READ: Perform an I2C Dev Addr write ... RESTART ... I2C Dev Addr read transaction.,1'b0
+,[3],i2c_rd_stop,For READ: perform an I2C Dev Addr write ... STOP ... I2C Dev Addr read transaction.,1'b0
+
+20,2,I2C_STATUS,RO,
+,[0],i2c_tc,I2C Transaction Complete bit.,
+,[1],i2c_error,I2C Bus Error or no response.,
+
+32,8,I2C_WR_DATA_1,RW,
+,[7:0],i2c_wr_data_1,Data write register for I2C transaction.,8'h0
+
+33,8,I2C_WR_DATA_2,RW,
+,[7:0],i2c_wr_data_2,Data write register for I2C transaction.,8'h0
+
+34,8,I2C_WR_DATA_3,RW,
+,[7:0],i2c_wr_data_3,Data write register for I2C transaction.,8'h0
+
+35,8,I2C_WR_DATA_4,RW,  
+,[7:0],i2c_wr_data_4,Data write register for I2C transaction.,8'h0
+
+36,8,I2C_WR_DATA_5,RW,     
+,[7:0],i2c_wr_data_5,Data write register for I2C transaction.,8'h0
+
+37,8,I2C_WR_DATA_6,RW,        
+,[7:0],i2c_wr_data_6,Data write register for I2C transaction.,8'h0
+
+38,8,I2C_WR_DATA_7,RW,           
+,[7:0],i2c_wr_data_7,Data write register for I2C transaction.,8'h0
+
+48,8,I2C_RD_DATA_1,RO,              
+,[7:0],i2c_rd_data_1,Read Data register for I2C transaction.,
+
+49,8,I2C_RD_DATA_2,RO,                 
+,[7:0],i2c_rd_data_2,Read Data register for I2C transaction.,
+
+50,8,I2C_RD_DATA_3,RO,                    
+,[7:0],i2c_rd_data_3,Read Data register for I2C transaction.,
+
+51,8,I2C_RD_DATA_4,RO,                       
+,[7:0],i2c_rd_data_4,Read Data register for I2C transaction.,
+
+52,8,I2C_RD_DATA_5,RO,
+,[7:0],i2c_rd_data_5,Read Data register for I2C transaction.,
+
+53,8,I2C_RD_DATA_6,RO,
+,[7:0],i2c_rd_data_6,Read Data register for I2C transaction.,
+
+54,8,I2C_RD_DATA_7,RO,
+,[7:0],i2c_rd_data_7,Read Data register for I2C transaction.,
+

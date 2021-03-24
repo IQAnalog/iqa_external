@@ -1,0 +1,57 @@
+0,32,TI_CTRL1,RW,
+,[7:0],en,TI cal enable,7'h00
+,[15:8],en_tc,enable timing calibration,7'hff
+,[17:16],fil_sel,Select signal conditioning filter,2'b10
+,[18],gc_sign,gc loop sign,1'b0
+,[19],tc_sign,tc loop sign,1'b0
+,[20],tc_sign_ana,tc correction sign,1'b0
+,[21],oc_sign,oc loop sign,1'b0
+,[22],cal_freeze,calibration freeze,1'b0
+,[23],oc_freeze,offset calibration freeze,1'b0
+,[24],gc_freeze,gain calibration freeze,1'b0
+,[25],tc_freeze,timing calibration freeze,1'b0
+,[26],twos_tc_ana,Twos complement switch for analog tc,1'b1
+,[27],force_tc,force timing correction value,1'b0
+,[29:28],mode,interleaving mode. 0:8x 1:16x 2:32x 3:64x ,2'b11
+,[30],cal_rst_reg,Calibration reset (active high),1'b0
+,[31],deriv_mode,Derivative mode,1'b0
+
+1,7,TI_CTRL2,RW,
+,[0],offset_corr_mode,Offset correction mode. 0:1x 1:4x,1'b1
+,[1],gain_corr_mode,Gain correction mode. 0:1x 1:4x,1'b1
+,[3:2],zone,Timing correction Nyquist zone,2'b00
+,[6:4],tc_scale,Timing correction speed,3'b100
+
+2,32,TI_TC_FORCE1,RW,
+s,[7:0],tc_force_val0,tc force value 0,8'h00
+s,[15:8],tc_force_val1,tc force value 1,8'h00
+s,[23:16],tc_force_val2,tc force value 2,8'h00
+s,[31:24],tc_force_val3,tc force value 3,8'h00
+
+3,32,TI_TC_FORCE2,RW,
+s,[7:0],tc_force_val4,tc force value 4,8'h00
+s,[15:8],tc_force_val5,tc force value 5,8'h00
+s,[23:16],tc_force_val6,tc force value 6,8'h00
+s,[31:24],tc_force_val7,tc force value 7,8'h00
+
+4,24,TI_TC_MUX,RW,
+,[2:0],tc_mux0,tc mux control 0,3'h0
+,[5:3],tc_mux1,tc mux control 1,3'h0
+,[8:6],tc_mux2,tc mux control 2,3'h0
+,[11:9],tc_mux3,tc mux control 3,3'h0
+,[14:12],tc_mux4,tc mux control 4,3'h0
+,[17:15],tc_mux5,tc mux control 5,3'h0
+,[20:18],tc_mux6,tc mux control 6,3'h0
+,[23:21],tc_mux7,tc mux control 7,3'h0
+
+5,32,TI_TC_STATUS1,RO,
+s,[7:0],tc_val0,tc readback value 0,
+s,[15:8],tc_val1,tc readback value 1,
+s,[23:16],tc_val2,tc readback value 2,
+s,[31:24],tc_val3,tc readback value 3,
+,,,,
+6,32,TI_TC_STATUS2,RO,
+s,[7:0],tc_val4,tc readback value 4,
+s,[15:8],tc_val5,tc readback value 5,
+s,[23:16],tc_val6,tc readback value 6,
+s,[31:24],tc_val7,tc readback value 7,

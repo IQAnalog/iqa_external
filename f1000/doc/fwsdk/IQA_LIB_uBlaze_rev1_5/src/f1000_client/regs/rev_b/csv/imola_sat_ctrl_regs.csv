@@ -1,0 +1,116 @@
+0,32,ADC_SAT_LANE1_INIT_MASK,RW,
+,[15:0],adc_sat_lane1_init_mask,Initial Saturation Bit OR vector bit mask for Lane 1 Mode 0-2,16'h0001
+,[31:16],adc_sat_lane1_init_mask_mode3,Initial Saturation Bit OR vector bit mask for Lane 1 Mode 3,16'h0001
+
+1,32,ADC_SAT_LANE2_INIT_MASK,RW,
+,[15:0],adc_sat_lane2_init_mask,Initial Saturation Bit OR vector bit mask for Lane 2 Mode 0-2,16'h0001
+,[31:16],adc_sat_lane2_init_mask_mode3,Initial Saturation Bit OR vector bit mask for Lane 2 Mode 3,16'h0002
+
+2,32,ADC_SAT_LANE3_INIT_MASK,RW,
+,[15:0],adc_sat_lane3_init_mask,Initial Saturation Bit OR vector bit mask for Lane 3 Mode 0-2,16'h0002
+,[31:16],adc_sat_lane3_init_mask_mode3,Initial Saturation Bit OR vector bit mask for Lane 3 Mode 3,16'h0004
+
+3,32,ADC_SAT_LANE4_INIT_MASK,RW,
+,[15:0],adc_sat_lane4_init_mask,Initial Saturation Bit OR vector bit mask for Lane 4 Mode 0-2,16'h0002
+,[31:16],adc_sat_lane4_init_mask_mode3,Initial Saturation Bit OR vector bit mask for Lane 4 Mode 3,16'h0008
+
+4,32,ADC_SAT_LANE5_INIT_MASK,RW,
+,[15:0],adc_sat_lane5_init_mask,Initial Saturation Bit OR vector bit mask for Lane 5 Mode 0-2,16'h0004
+,[31:16],adc_sat_lane5_init_mask_mode3,Initial Saturation Bit OR vector bit mask for Lane 5 Mode 3,16'h0010
+
+5,32,ADC_SAT_LANE6_INIT_MASK,RW,
+,[15:0],adc_sat_lane6_init_mask,Initial Saturation Bit OR vector bit mask for Lane 6 Mode 0-2,16'h0004
+,[31:16],adc_sat_lane6_init_mask_mode3,Initial Saturation Bit OR vector bit mask for Lane 6 Mode 3,16'h0020
+
+6,32,ADC_SAT_LANE7_INIT_MASK,RW,
+,[15:0],adc_sat_lane7_init_mask,Initial Saturation Bit OR vector bit mask for Lane 7 Mode 0-2,16'h0008
+,[31:16],adc_sat_lane7_init_mask_mode3,Initial Saturation Bit OR vector bit mask for Lane 7 Mode 3,16'h0040
+
+7,32,ADC_SAT_LANE8_INIT_MASK,RW,
+,[15:0],adc_sat_lane8_init_mask,Initial Saturation Bit OR vector bit mask for Lane 8 Mode 0-2,16'h0008
+,[31:16],adc_sat_lane8_init_mask_mode3,Initial Saturation Bit OR vector bit mask for Lane 8 Mode 3,16'h0080
+
+8,12,ADC_SAT_SHIFT_CTRL_LANE_1,RW,
+,[2:0],adc_sat_lane1_shift_0,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 1 Mode 0,3'h3
+,[5:3],adc_sat_lane1_shift_1,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 1 Mode 1,3'h1
+,[8:6],adc_sat_lane1_shift_2,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 1 Mode 2,3'h0
+,[11:9],adc_sat_lane1_shift_3,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 1 Mode 3,3'h7
+
+9,12,ADC_SAT_SHIFT_CTRL_LANE_2,RW,
+,[2:0],adc_sat_lane2_shift_0,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 2 Mode 0,3'h3
+,[5:3],adc_sat_lane2_shift_1,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 2 Mode 1,3'h1
+,[8:6],adc_sat_lane2_shift_2,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 2 Mode 2,3'h0
+,[11:9],adc_sat_lane2_shift_3,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 2 Mode 3,3'h7
+
+10,12,ADC_SAT_SHIFT_CTRL_LANE_3,RW,
+,[2:0],adc_sat_lane3_shift_0,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 3 Mode 0,3'h3
+,[5:3],adc_sat_lane3_shift_1,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 3 Mode 1,3'h1
+,[8:6],adc_sat_lane3_shift_2,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 3 Mode 2,3'h0
+,[11:9],adc_sat_lane3_shift_3,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 3 Mode 3,3'h7
+
+11,12,ADC_SAT_SHIFT_CTRL_LANE_4,RW,
+,[2:0],adc_sat_lane4_shift_0,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 4 Mode 0,3'h3
+,[5:3],adc_sat_lane4_shift_1,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 4 Mode 1,3'h1
+,[8:6],adc_sat_lane4_shift_2,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 4 Mode 2,3'h0
+,[11:9],adc_sat_lane4_shift_3,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 4 Mode 3,3'h7
+
+12,12,ADC_SAT_SHIFT_CTRL_LANE_5,RW,
+,[2:0],adc_sat_lane5_shift_0,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 5 Mode 0,3'h3
+,[5:3],adc_sat_lane5_shift_1,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 5 Mode 1,3'h1
+,[8:6],adc_sat_lane5_shift_2,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 5 Mode 2,3'h0
+,[11:9],adc_sat_lane5_shift_3,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 5 Mode 3,3'h7
+
+13,12,ADC_SAT_SHIFT_CTRL_LANE_6,RW,
+,[2:0],adc_sat_lane6_shift_0,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 6 Mode 0,3'h3
+,[5:3],adc_sat_lane6_shift_1,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 6 Mode 1,3'h1
+,[8:6],adc_sat_lane6_shift_2,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 6 Mode 2,3'h0
+,[11:9],adc_sat_lane6_shift_3,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 6 Mode 3,3'h7
+
+14,12,ADC_SAT_SHIFT_CTRL_LANE_7,RW,
+,[2:0],adc_sat_lane7_shift_0,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 7 Mode 0,3'h3
+,[5:3],adc_sat_lane7_shift_1,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 7 Mode 1,3'h1
+,[8:6],adc_sat_lane7_shift_2,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 7 Mode 2,3'h0
+,[11:9],adc_sat_lane7_shift_3,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 7 Mode 3,3'h7
+
+15,12,ADC_SAT_SHIFT_CTRL_LANE_8,RW,
+,[2:0],adc_sat_lane8_shift_0,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 8 Mode 0,3'h3
+,[5:3],adc_sat_lane8_shift_1,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 8 Mode 1,3'h1
+,[8:6],adc_sat_lane8_shift_2,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 8 Mode 2,3'h0
+,[11:9],adc_sat_lane8_shift_3,ADC Saturation Bit OR vector shift distance (minus 1) for Lane 8 Mode 3,3'h7
+
+16,32,DAC_SAT_COUNTERS_1,RO,
+,[15:0],dac_sat_counter_0,DAC Saturation Bit counter 0.,
+,[31:16],dac_sat_counter_1,DAC Saturation Bit counter 1.,
+
+17,32,DAC_SAT_COUNTERS_2,RO,
+,[15:0],dac_sat_counter_2,DAC Saturation Bit counter 2.,
+,[31:16],dac_sat_counter_3,DAC Saturation Bit counter 3.,
+
+18,32,DAC_SAT_COUNTERS_3,RO,
+,[15:0],dac_sat_counter_4,DAC Saturation Bit counter 4.,
+,[31:16],dac_sat_counter_5,DAC Saturation Bit counter 5.,
+
+19,32,DAC_SAT_COUNTERS_4,RO,
+,[15:0],dac_sat_counter_6,DAC Saturation Bit counter 6.,
+,[31:16],dac_sat_counter_7,DAC Saturation Bit counter 7.,
+
+20,32,DAC_SAT_COUNTERS_5,RO,
+,[15:0],dac_sat_counter_8,DAC Saturation Bit counter 8.,
+,[31:16],dac_sat_counter_9,DAC Saturation Bit counter 9.,
+
+21,1,SAT_SELF_CLEARING,RW,
+a,[0],clear_dac_sat_counters,Clear all DAC saturation bit counters.,1'b0
+
+22,32,ADC_SAT_LANE_DISABLE,RW,
+,[3:0],adc_lane1_disable_bits,Lane 1 saturation FSM disable bit for each of 4 saturation shift modes.,4'h0
+,[7:4],adc_lane2_disable_bits,Lane 2 saturation FSM disable bit for each of 4 saturation shift modes.,4'h0
+,[11:8],adc_lane3_disable_bits,Lane 3 saturation FSM disable bit for each of 4 saturation shift modes.,4'h0
+,[15:12],adc_lane4_disable_bits,Lane 4 saturation FSM disable bit for each of 4 saturation shift modes.,4'h0
+,[19:16],adc_lane5_disable_bits,Lane 5 saturation FSM disable bit for each of 4 saturation shift modes.,4'h0
+,[23:20],adc_lane6_disable_bits,Lane 6 saturation FSM disable bit for each of 4 saturation shift modes.,4'h0
+,[27:24],adc_lane7_disable_bits,Lane 7 saturation FSM disable bit for each of 4 saturation shift modes.,4'h0
+,[31:28],adc_lane8_disable_bits,Lane 8 saturation FSM disable bit for each of 4 saturation shift modes.,4'h0
+
+23,3,ADC_SAT_SHIFT,RW,
+,[2:0],adc_sat_shift,Saturtion bit lane shift distance (0-7),3'h6
+

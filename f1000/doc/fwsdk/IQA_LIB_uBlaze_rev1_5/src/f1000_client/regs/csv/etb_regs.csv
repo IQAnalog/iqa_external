@@ -1,0 +1,52 @@
+0,1,ETB_CONTROL,RW,
+,[0],sw_rst_n,Active-Low SOFTWARE RESETn - RISC-V resets Controller only - Chip wakes up with SOFTWARE RESET OFF,1'b1
+
+1,26,ETB_STATUS,RO,
+,[9:0],trigger_addr,The SRAM addres at the time trigger was detected.,
+,[19:10],etb_addr,The current ETB address.,
+,[20],capture_complete,Indicates that a capture has completed.,
+,[22:21],main_fsm_state,Main FSM State,
+,[23],enabled,Indicates if the ETB has been enabled.,
+,[25:24],mode,Indicates the selected ETB mode.,
+
+2,32,RD_TRACE_REG_2,RO,
+,[31:0],rd_trace_reg_2,HSW (Highest Significant Word) of the trace readback data fram the TRACE SRAM,
+
+3,32,RD_TRACE_REG_1,RO,
+,[31:0],rd_trace_reg_1,MSW of the trace readback data from the TRACE SRAM,
+
+4,32,RD_TRACE_REG_0,RO,
+,[31:0],rd_trace_reg_0,LSW of the trace readback data from the TRACE SRAM,
+
+5,22,TRACE_SRAM0_CONTROL,RW,
+,[0],trace_sram0_stov,SRAM0 STOV - Self-timed pulse override active-HIGH,1'b0
+,[3:1],trace_sram0_ema,SRAM0 EMA - Extra Margin Adjustment,3'b010
+,[5:4],trace_sram0_emaw,SRAM0 EMAW - Extra Margin Adjustment - WRITE,2'b01
+,[6],trace_sram0_emas,SRAM0 EMAS - Extra Margin Adjustment - SENSE AMPLIFIER PULSE,1'b0
+,[7],trace_sram0_rdt,SRAM0 RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[8],trace_sram0_cre1,SRAM0 CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[9],trace_sram0_cre2,SRAM0 CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[15:10],trace_sram0_fca1,SRAM0 FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[21:16],trace_sram0_fca2,SRAM0 FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+6,22,TRACE_SRAM1_CONTROL,RW,
+,[0],trace_sram1_stov,SRAM1 STOV - Self-timed pulse override active-HIGH,1'b0
+,[3:1],trace_sram1_ema,SRAM1 EMA - Extra Margin Adjustment,3'b010
+,[5:4],trace_sram1_emaw,SRAM1 EMAW - Extra Margin Adjustment - WRITE,2'b01
+,[6],trace_sram1_emas,SRAM1 EMAS - Extra Margin Adjustment - SENSE AMPLIFIER PULSE,1'b0
+,[7],trace_sram1_rdt,SRAM1 RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[8],trace_sram1_cre1,SRAM1 CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[9],trace_sram1_cre2,SRAM1 CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[15:10],trace_sram1_fca1,SRAM1 FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[21:16],trace_sram1_fca2,SRAM1 FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+
+# ==================================
+# Address 8 is for self clearing bits
+# ==================================
+7,5,ETB_SELF_CLEARING,RW,
+b,[0],dec_etb_addr,Decrements the ETB address by 1.,1'b0
+b,[1],inc_etb_addr,Increment the ETB address by 1.,1'b0
+b,[2],zero_etb_addr,Zero the ETB address.,1'b0
+b,[3],etb_initiate,Re-initiate ETB running state after capture stop.,1'b0
+b,[4],force_trigger,Forces a trigger event of the capture,1'b0
+

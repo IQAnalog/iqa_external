@@ -1,0 +1,64 @@
+0,10,TX_LANE_CGS_ILAS_STATUS,RO,
+,[2:0],cgs_ilas_fsm_state,Test bus FSM state outputs,
+,[3],cgs_locked_ack,Acknowledges that cgs_locked occurred for this lane,
+,[4],cgs_done_ack,Acknowledges that cgs_done occurred for this lane,
+,[5],ilas_done_ack,Acknowledges that ilas_done occurred for this lane,
+,[6],ilas_start_ack,Acknowledges that ilas_start occurred for this lane,
+,[7],tx_data_state,tx_cgs_ilas_fsm is in data state for this lane,
+,[8],rchd_early_data_release,ilas_mframes counter is now equal to ilas_early_data_release for this lane,
+,[9],data_fifo_read,Data FIFO read enable.  Occurs one cycle prior to data state,
+
+1,5,TX_LANE_CONFIG,RW,
+,[0],lane_link,Link this lane belongs to,1'b0
+,[4:1],lane_id,Lane ID for this lane,4'h0
+
+2,6,TX_MANUAL,RW,
+,[0],lane_force_resync,Force resync from lane register interface (per lane),1'b0
+,[1],manual_tx_cgs_locked,Manual CGS lock_force data state (per lane),1'b0
+,[2],manual_tx_cgs_done,Manual CGS done (per lane),1'b0
+,[3],manual_tx_fifo_reset,Manual TX FIFO reset,1'b0
+,[4],bit_reverse,Enable bit reversal of TX FIFO output,1'b0
+,[5],manual_cgs_ilas_fsm_enabled,Manual cgs_ilas_fsm_enabled (per lane),1'b0
+
+3,13,TX_TEST_MODES,RW,
+,[0],test_repeat_k_en,Repeated /K/ test mode enable.,1'b0
+,[1],test_repeat_d21_5_en,Repeated /D21.5/ test mode enable_follow CGS State (no ILAS State),1'b0
+,[2],test_repeat_ilas,Repeated TX of ILAS. Done per lane for TX.,1'b0
+,[3],sel_rand_num,Select Random Number Generator for test interface,1'b0
+,[4],sel_test4enc,Select test interface for ENCODER input,1'b0
+,[12:5],ilas_dummy_data_fixed_byte,Fixed Byte for ILAS dummy data (per lane),1'b0
+
+4,16,TX_CONFIG_DATA_WORD_6,RO,
+,[15:0],config_data_word_6,CONFIG DATA WORD[6],
+
+5,16,TX_CONFIG_DATA_WORD_5,RO,
+,[15:0],config_data_word_5,CONFIG DATA WORD[5],
+
+6,16,TX_CONFIG_DATA_WORD_4,RO,
+,[15:0],config_data_word_4,CONFIG DATA WORD[4],
+
+7,16,TX_CONFIG_DATA_WORD_3,RO,
+,[15:0],config_data_word_3,CONFIG DATA WORD[3],
+
+8,16,TX_CONFIG_DATA_WORD_2,RO,
+,[15:0],config_data_word_2,CONFIG DATA WORD[2],
+
+9,16,TX_CONFIG_DATA_WORD_1,RO,
+,[15:0],config_data_word_1,CONFIG DATA WORD[1],
+
+10,16,TX_CONFIG_DATA_WORD_0,RO,
+,[15:0],config_data_word_0,CONFIG DATA WORD[0],
+
+11,3,ENCODER_TEST_INPUTS,RW,
+,[0],disparity_reg_in,disparity_reg input for controllability,1'b0
+,[1],en_disparity_fb,Use to disable disparity feedback for controllability,1'b1
+,[2],ld_disparity_reg,Use to load the disparity register for controllability,1'b0
+
+12,12,ENCODER_TEST_OUTPUTS,RO,
+,[8:0],encoder_9b_data_in,Bring out encoder_9b_data_in for observability,
+,[9],disparity_comb,Bring out disparity_comb for observability,
+,[10],toggle_disparity,Bring out toggle_disparity output for controllability,
+,[11],disparity_reg,Bring out disparity_reg for observability,
+
+13,10,ENCODER_DATA_OUTPUTS,RO,
+,[9:0],encoded_10b_data_comb,Bring out encoder_10b_data_comb for observability,

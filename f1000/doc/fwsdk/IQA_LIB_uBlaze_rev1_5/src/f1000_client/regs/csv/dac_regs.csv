@@ -1,0 +1,104 @@
+0,7,DAC_INIT,RW,
+,[0],dac_init,.,1'b1
+,[2:1],channel_id,Identify the MUX channel.<BR>00: Normal operation<BR>01: ID generated before the shifter<BR>10: ID generated before the B2T<BR>11: ID generated before the FIFO,2'b00
+,[6:3],channel_shift_value,Rotate the DAC input channels.,5'b00000
+
+1,11,SYSREF_CTRL,RW,
+,[0],sysref_cnt_enable,.,1'b0
+,[10:1],sysref_cnt_stop,Frame length.,10'b0101111111
+
+2,26,DEM_CTRL,RW,
+,[0],dem_enable,Dynamic element matching (DEM) enable.,1'b1
+,[1],dem_force,Bypass the DEM forcing the value in the dem_force_value register.,1'b0
+,[25:2],dem_force_value,A value to be used with the dem_force register.,23'h000000
+
+3,26,LFSR_CTRL,RW,
+,[0],lfsr_enable,Enable the pseudo-random number generator (LFSR) used by the DEM.,1'b1
+,[1],lfsr_init_enable,Initialize the LFSR using different seeds.,1'b0
+,[2],lfsr_restart,Restart the initialization procedure,1'b0
+,[25:3],lfsr_seed,The initial seed for the pseudo-random number generator.,23'h7fae00
+
+# ------------------------------------------------------------------------------
+# Analog Interface Registers
+# ------------------------------------------------------------------------------
+15,8,ATEST_CTRL,RW,
+,[7:0],atest_sel,Analog test select.,8'h0
+
+16,6,PWR_CTRL,RW,
+,[1:0],dac_core_enable,DAC enable.,2'h0
+,[5:2],dac_cm_bias,DAC enable.,4'h0
+
+17,17,MUX_CTRL,RW,
+,[16:0],mux_ctrl,MUX control.,17'h00
+
+18,28,DATA_CTRL,RW,
+,[1:0],dac0_data_enable,.,2'h0
+,[5:2],dac0_data0_ctrl,.,4'h0
+,[9:6],dac0_data1_ctrl,.,4'h0
+,[11:10],dac0_clk0_enable,.,2'h0
+,[13:12],dac0_clk1_enable,.,2'h0
+,[15:14],dac1_data_enable,.,2'h0
+,[19:16],dac1_data0_ctrl,.,4'h0
+,[23:20],dac1_data1_ctrl,.,4'h0
+,[25:24],dac1_clk0_enable,.,2'h0
+,[27:26],dac1_clk1_enable,.,2'h0
+
+19,32,CLK_CTRL0,RW,
+,[31:0],dac0_clk0_ctrl,.,32'h0
+
+20,32,CLK_CTRL1,RW,
+,[31:0],dac0_clk1_ctrl,.,32'h0
+
+21,32,CLK_CTRL2,RW,
+,[31:0],dac1_clk0_ctrl,.,32'h0
+
+22,32,CLK_CTRL3,RW,
+,[31:0],dac1_clk1_ctrl,.,32'h0
+
+23,19,LDO0_CTRL,RW,
+,[7:0],ldo0_ctrl,DAC LDO0 control.,8'h1e
+,[8],ldo0_fine_en,LDO0 fine control enable,1'b0
+,[10:9],ldo0_fine_rate,LDO0 fine control rate,2'b10
+s,[18:11],ldo0_fine_val,LDO0 fine control ,8'h00
+
+24,19,LDO1_CTRL,RW,
+,[7:0],ldo1_ctrl,DAC LDO1 control.,8'h1e
+,[8],ldo1_fine_en,LDO1 fine control enable,1'b0
+,[10:9],ldo1_fine_rate,LDO1 fine control rate,2'b10
+s,[18:11],ldo1_fine_val,LDO1 fine control ,8'h00
+
+25,24,DLL_CTRL,RW,
+,[0],dll_rst_n,DLL reset PFD (active low),1'b1
+,[1],dll_clk_en,DLL clock enable,1'b1
+,[11:2],dll_ctrl,DLL control.,10'h0
+,[13:12],dll_cp_bias_ctrl,DLL charge pump bias,2'b01
+,[14],dll_hf_sel,DLL high frequency select,1'b1
+,[18:15],dll_vc_ctrl,DLL control voltage,4'b1000
+,[21:19],dll_cap_ctrl,DLL capacitor control,3'b100
+,[23:22],clk_cm_ctrl,DLL capacitor control,2'b10
+
+26,32,TC_CTRL0,RW,
+,[7:0],tc_0,,8'h0
+,[15:8],tc_1,,8'h0
+,[23:16],tc_2,,8'h0
+,[31:24],tc_3,,8'h0
+
+27,32,TC_CTRL1,RW,
+,[7:0],tc_4,,8'h0
+,[15:8],tc_5,,8'h0
+,[23:16],tc_6,,8'h0
+,[31:24],tc_7,,8'h0
+
+28,4,DLL_STATUS,RO,
+,[3:0],dll_status,DLL status,
+
+29,32,DAC0_GP,RW,
+,[31:0],dac0_gp,General purpose.,32'h0
+
+30,32,DAC1_GP,RW,
+,[31:0],dac1_gp,General purpose.,32'h0
+
+31,28,SYSREF_RD,RO,
+,[7:0],dac_channel_id,,
+,[17:8],dac_sysref_cnt,,
+,[27:18],sysref_cnt_value,,

@@ -1,0 +1,63 @@
+0,32,band0_iq_coeff0,RW,
+,[15:0],b0_i_coeff0,Band1 i_coefficient for freq 1,16'h0
+,[31:16],b0_q_coeff0,Band1 q_coefficient for freq 1,16'h0
+
+1,32,band0_iq_coeff1,RW,
+,[15:0],b0_i_coeff1,Band1 i_coefficient for freq 2,16'h0
+,[31:16],b0_q_coeff1,Band1 q_coefficient for freq 2,16'h0
+
+2,32,band0_iq_coeff2,RW,
+,[15:0],b0_i_coeff2,Band1 i_coefficient for freq 3,16'h0
+,[31:16],b0_q_coeff2,Band1 q_coefficient for freq 3,16'h0
+
+3,32,band0_iq_coeff3,RW,
+,[15:0],b0_i_coeff3,Band1 i_coefficient for freq 4,16'h0
+,[31:16],b0_q_coeff3,Band1 q_coefficient for freq 4,16'h0
+
+4,32,band0_iq_coeff4,RW,
+,[15:0],b0_i_coeff4,Band1 i_coefficient for freq 5,16'h0
+,[31:16],b0_q_coeff4,Band1 q_coefficient for freq 5,16'h0
+
+5,32,band0_iq_coeff5,RW,
+,[15:0],b0_i_coeff5,Band1 i_coefficient for freq 6,16'h0
+,[31:16],b0_q_coeff5,Band1 q_coefficient for freq 6,16'h0
+
+6,32,band0_iq_coeff6,RW,
+,[15:0],b0_i_coeff6,Band1 i_coefficient for freq 7,16'h0
+,[31:16],b0_q_coeff6,Band1 q_coefficient for freq 7,16'h0
+
+7,32,band0_iq_coeff7,RW,
+,[15:0],b0_i_coeff7,Band1 i_coefficient for freq 8,16'h0
+,[31:16],b0_q_coeff7,Band1 q_coefficient for freq 8,16'h0
+
+8,32,band1_iq_coeff0,RW,
+,[15:0],b1_i_coeff0,Band2 i_coefficient for freq 1,16'h0
+,[31:16],b1_q_coeff0,Band2 q_coefficient for freq 1,16'h0
+
+9,32,band1_iq_coeff1,RW,
+,[15:0],b1_i_coeff1,Band2 i_coefficient for freq 2,16'h0
+,[31:16],b1_q_coeff1,Band2 q_coefficient for freq 2,16'h0
+
+10,32,band1_iq_coeff2,RW,
+,[15:0],b1_i_coeff2,Band2 i_coefficient for freq 3,16'h0
+,[31:16],b1_q_coeff2,Band2 q_coefficient for freq 3,16'h0
+
+11,32,band1_iq_coeff3,RW,
+,[15:0],b1_i_coeff3,Band2 i_coefficient for freq 4,16'h0
+,[31:16],b1_q_coeff3,Band2 q_coefficient for freq 4,16'h0
+
+12,32,band1_iq_coeff4,RW,
+,[15:0],b1_i_coeff4,Band2 i_coefficient for freq 5,16'h0
+,[31:16],b1_q_coeff4,Band2 q_coefficient for freq 5,16'h0
+
+13,32,band1_iq_coeff5,RW,
+,[15:0],b1_i_coeff5,Band2 i_coefficient for freq 6,16'h0
+,[31:16],b1_q_coeff5,Band2 q_coefficient for freq 6,16'h0
+
+14,32,band1_iq_coeff6,RW,
+,[15:0],b1_i_coeff6,Band2 i_coefficient for freq 7,16'h0
+,[31:16],b1_q_coeff6,Band2 q_coefficient for freq 7,16'h0
+
+15,32,band1_iq_coeff7,RW,
+,[15:0],b1_i_coeff7,Band2 i_coefficient for freq 8,16'h0
+,[31:16],b1_q_coeff7,Band2 q_coefficient for freq 8,16'h0

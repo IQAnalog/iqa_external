@@ -1,0 +1,22 @@
+0,1,TX_LANE_FRAMER_CONTROL,RW,
+,[0],tx_lane_framer_sw_rst_n,Active-Low SOFTWARE RESETn - RISC-V resets FRAMER Only - Chip wakes up with SOFTWARE RESET OFF,1'b1
+
+1,31,LANE_FIFO_STATUS_REGISTER,RO,
+,[0],tx_lane_fifo_empty,TX Lane FIFO is EMPTY,
+,[1],tx_lane_fifo_underflow,TX Lane FIFO UNDERFLOW,
+,[2],tx_lane_fifo_full,TX Lane FIFO is FULL,
+,[3],tx_lane_fifo_overflow,TX Lane FIFO OVERFLOW,
+,[9:4],tx_lane_fifo_counter,Number of TX Lane FIFO entries,
+,[10],tx_framer_fifo_empty,TX Framer FIFO is EMPTY,
+,[11],tx_framer_fifo_underflow,TX Framer FIFO UNDERFLOW, 
+,[12],tx_framer_fifo_full,TX Framer FIFO is FULL,
+,[13],tx_framer_fifo_overflow,TX Framer FIFO OVERFLOW, 
+,[17:14],tx_framer_fifo_counter,Number of TX Framer FIFO entries,
+,[21:18],tl2ll_fifo_rd_addr_out,TL2LL_FIFO Read Address,
+,[25:22],tl2ll_fifo_wr_addr_out,TL2LL_FIFO Write Address,
+,[26],rchd_tl2ll_fifo_thresh,TL2LL_FIFO Level has reached the programmed :qrd_tl2ll_fifo_threshold level,
+,[27],tx_invalid_dsp_d_width,Indicates dsp_d_width = 11 or incorrect for the current state,
+,[28],tx_send_24b_lsb_8_save_8_no_dsp_read,Indicates no DSP_READ in the ASSEMBLY CODE in SEND_24B_LSB_8_SAVE_8 State,
+,[29],tx_send_24b_msb_16_no_dsp_read,Indicates no DSP_READ in the ASSEMBLY CODE in SEND_24B_MSB_16 State,
+,[30],tx_send_msb_16_no_dsp_read,Indicates no DSP_READ in the ASSEMBLY CODE in SEND_MSB_16 State,
+

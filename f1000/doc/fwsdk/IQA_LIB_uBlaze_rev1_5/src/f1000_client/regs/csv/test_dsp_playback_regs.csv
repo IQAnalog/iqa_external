@@ -1,0 +1,58 @@
+0,23,CAPTURE_PLAYBACK_CONTROL,RW,
+,[0],sw_rst_n,SOFTWARE RESETn - RISC-V resets Controller only - Chip wakes up with SOFTWARE RESET OFF,1'b1
+,[1],axi_bus_access,RISC-V allows AXI BUS Access - Chip wakes up with AXI BUS Access,1'b1
+,[17:2],sample_size,RISC-V writes sample_size,16'h0000
+,[18],axi_test_en,test_en_i used in the AXI Bus Mux,1'b0
+#,[20:19],sel_adc,selects the ADC that is providing data to the SRAMs,2'b00
+,[19],repeat_capture_playback,Repeats the capture or the playback,1'b0
+,[20],en_trigger_capture_playbackn,if 1 trigger enables capture-if 0 trigger enables playback,1'b1
+,[21],dac_sel,Selects either playback data or DSP_DAC data,1'b1
+,[22],mem_play_adc_sel,Selects either playback data or adc_cal data,1'b1
+
+1,11,CAPTURE_PLAYBACK_STATUS,RO,
+,[0],capture_complete,Indicates memory capture is complete,1'b0
+,[1],invalid_sample_size,ERROR: Indicates sample size is invalid,1'b0
+,[5:2],fsm_state,FSM State of mem_capture_playback controller,3'b000
+,[6],axi_bus_access_mode,1:axi_bus_access_mode;0:capture_playback_mode,1'b0
+,[7],playback_complete,Indicates memory playback is complete,1'b0
+,[8],capture_playback_both_on,ERROR: Indicates both initiate_capture and initiate_playback are ON,1'b0
+,[9],invalid_axi_bus_access,ERROR: Indicates axi_bus_access when initiate_capture OR initiate_playback is ON,1'b0
+,[10],invalid_repeat_capture_playback,ERROR: Indicates repeat_capture playback with both initiate_capture AND initiate_playback OFF,1'b0
+
+2,10,START_CAPTURE_PLAYBACK_ADDRESS,RW,
+,[9:0],start_capture_playback_address,Capture or Playback starts from this address,9'b0
+
+3,4,BYTE_WRITE_MASK,RW,
+,[3:0],be_write_mask,Masks writes of bytes - active HIGH,4'b1111
+
+4,2,CEN_MASK,RW,
+,[1:0],cen_mask,Masks CEN so that SRAMs can be addressed separately - active LOW,2'h0
+
+5,32,AXI_BUS_MUX_Q,RO,
+,[31:0],axi_bus_mux_Q,Q output piped through the AXI BUS MUX,32'h0
+
+6,7,SHARED_SRAM_CONTROL,RW,
+,[0],stov,STOV - Self-timed pulse override active-HIGH,1'b0
+,[3:1],ema,EMA - Extra Margin Adjustment,3'b010
+,[5:4],emaw,EMAW - Extra Margin Adjustment - WRITE,2'b01
+,[6],emas,EMAS - Extra Margin Adjustment - SENSE AMPLIFIER PULSE,1'b0
+
+7,13,SRAM_1_CONTROL,RW,
+,[0],rdt_1,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_1,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_1,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[7:3],fca1_1,FCA1 - Column Redundancy Address Lower Half Binary Encoded,5'b00000
+,[12:8],fca2_1,FCA2 - Column Redundancy Address Upper Half Binary Encoded,5'b00000
+
+8,13,SRAM_0_CONTROL,RW,
+,[0],rdt_0,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[1],cre1_0,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[2],cre2_0,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[7:3],fca1_0,FCA1 - Column Redundancy Address Lower Half Binary Encoded,5'b00000
+,[12:8],fca2_0,FCA2 - Column Redundancy Address Upper Half Binary Encoded,5'b00000
+
+9,1,INITIATE_CAPTURE_CONTROL,RW,
+a,[0],initiate_capture,RISC-V initiates capture,1'b0
+
+10,1,INITIATE_PLAYBACK_CONTROL,RW,
+a,[0],initiate_playback,RISC-V initiates playback,1'b0

@@ -1,0 +1,76 @@
+0,13,ADC16_PWR,RW,
+,[8:0],en,Sweep direction,9'h1ff
+,[9],dll_clk_en,DLL clock enable,1'b0
+,[10],test_pat_en,Enable test pattern,1'b0
+,[12:11],test_pat_sel,Test pattern select,2'b00
+
+1,28,ADC16_MUX,RW,
+,[7:0],sweep_dir,Sweep direction,8'h00
+,[15:8],en_mux_ctrl,Enable automatic mux control,8'h00
+,[23:16],dat_out_sel_reg,Skip mux override value,8'hff
+,[24],force_skip_mux,Enable skip mux override,1'b1
+,[26:25],ilv_mode,Interleaving mode,2'b11
+,[27],en_mux,Enable,1'b1
+
+2,29,ADC16_CALDAC,RW,
+s,[11:0],cal_dac_dat,Calibration DAC input,12'h000
+,[12],cal_dac_trigger,Calibration DAC clock,1'b0
+,[28:13],cal_dac_ctrl,Calibration DAC control,16'h0000
+
+3,21,ADC16_DLL,RW,
+,[7:0],dll_ctrl,DLL control,8'h00
+,[8],dll_rst_n,DLL reset PFD (active low),1'b1
+,[10:9],dll_cp_bias_ctrl,DLL charge pump bias,2'b01
+,[11],dll_hf_sel,DLL high frequency select,1'b1
+,[15:12],dll_vc_ctrl,DLL control voltage,4'b1000
+,[18:16],dll_cap_ctrl,DLL capacitor control,3'b100
+,[20:19],clk_cm_ctrl,DLL capacitor control,2'b10
+
+4,4,ADC16_DLL_STATUS,RO,
+ ,[3:0],dll_status,DLL status,
+
+5,12,ADC16_BIAS,RW,
+ ,[3:0],bias_ctrl,Bias control,4'h0
+ ,[11:4],gp_ctrl,General purpose control bits,8'h00
+
+6,19,ADC16_LDO1,RW,
+s ,[7:0],ldo_fine_val1,LDO fine control ,8'h00
+  ,[8],ldo_fine_en1,LDO fine control enable,1'b0
+  ,[10:9],ldo_fine_rate1,LDO fine control rate,2'b10
+  ,[18:11],ldo_ctrl1,LDO control,8'h00
+
+7,19,ADC16_LDO2,RW,
+s ,[7:0],ldo_fine_val2,LDO fine control ,8'h00
+  ,[8],ldo_fine_en2,LDO fine control enable,1'b0
+  ,[10:9],ldo_fine_rate2,LDO fine control rate,2'b10
+  ,[18:11],ldo_ctrl2,LDO control,8'h00
+
+8,19,ADC16_LDO3,RW,
+s ,[7:0],ldo_fine_val3,LDO fine control ,8'h00
+  ,[8],ldo_fine_en3,LDO fine control enable,1'b0
+  ,[10:9],ldo_fine_rate3,LDO fine control rate,2'b10
+  ,[18:11],ldo_ctrl3,LDO control,8'h00
+
+9,6,ADC16_DIGI_CLK,RW,
+ ,[0],ck_sync,ADC digital clock phase sync,1'b0
+ ,[4:1],ck_ph,ADC digital clock phase,4'b0001
+ ,[5],sync,ADC analog frontend clock sync,1'b0
+
+10,13,ADC16_SH,RW,
+ ,[8:0],sah_en,,9'h000
+ ,[12:9],sah_ctrl,,4'h0
+
+11,20,ADC16_ATEST,RW,
+ ,[15:0],atest_ctrl,atest select,16'h0000
+ ,[16],sah_atest_en,,1'b0
+ ,[19:17],dll_atest_sel,DLL atest select,3'b000
+
+12,8,SW_CAL_CTRL,RW,
+ ,[7:0],sw_cal_ctrl,Software controlled calibrarion bits,8'h00
+
+13,8,SW_CAL_STATUS,RO,
+ ,[7:0],sw_cal_status,Status bits for software controlled calibration,
+
+14,8,SYNC_STATUS,RO,
+ ,[7:0],sync_status,Status bits for synchronization monitoring,
+

@@ -1,0 +1,125 @@
+# ==================================================================================
+# F1000 ARM PAD Control registers
+#
+#
+# 
+# ==================================================================================
+0,15,BOOT_MODE,RO,
+,[7:0],chip_revision,8-Bit Read-Only chip revision.,
+,[12:8],boot,5-Bit Read-Only boot pin status.,
+,[14:13],bond,2-Bit Read-Only bond pad status.,
+
+1,27,PAD_MISC_CONFIG,RW,
+,[4:0],i2c_pad_cfg,Pad configuration for I2C pins,5'h7
+,[9:5],mspi_pad_cfg,Pad configuration for Master SPI pin,5'h7
+,[14:10],sspi_pad_cfg,Pad configuration for Slave SPI pin,5'h7
+,[19:15],uart_pad_cfg,Pad configuration for UART pin,5'h7
+,[22:20],global_pad_cfg,Pad configuration for pins with no independent control.,3'h7
+,[23],jtag_sel,Controls which processor uses the jtag pins; 0: epa,1'b0
+,[24],i2c_sel,Controls which processor uses the i2c pins; 0: epa,1'b0
+,[25],mspi_sel,Controls which processor uses the MSPI pins; 0: epa,1'b0
+,[26],gpio_sel,Controls which processor uses the GPIO pins; 0: epa,1'b0
+
+2,20,PAD_GPIO_CONFIG0,RW,
+,[4:0],gpio_pad_cfg_00,Pad configuration for GPIO pin 0,5'h7
+,[9:5],gpio_pad_cfg_01,Pad configuration for GPIO pin 1,5'h7
+,[14:10],gpio_pad_cfg_02,Pad configuration for GPIO pin 2,5'h7
+,[19:15],gpio_pad_cfg_03,Pad configuration for GPIO pin 3,5'h7
+
+3,20,PAD_GPIO_CONFIG1,RW,
+,[4:0],gpio_pad_cfg_04,Pad configuration for GPIO pin 4,5'h7
+,[9:5],gpio_pad_cfg_05,Pad configuration for GPIO pin 5,5'h7
+,[14:10],gpio_pad_cfg_06,Pad configuration for GPIO pin 6,5'h7
+,[19:15],gpio_pad_cfg_07,Pad configuration for GPIO pin 7,5'h7
+
+4,20,PAD_GPIO_CONFIG2,RW,
+,[4:0],gpio_pad_cfg_08,Pad configuration for GPIO pin 8,5'h7
+,[9:5],gpio_pad_cfg_09,Pad configuration for GPIO pin 9,5'h7
+,[14:10],gpio_pad_cfg_10,Pad configuration for GPIO pin 10,5'h7
+,[19:15],gpio_pad_cfg_11,Pad configuration for GPIO pin 11,5'h7
+
+5,20,PAD_GPIO_CONFIG3,RW,
+,[4:0],gpio_pad_cfg_12,Pad configuration for GPIO pin 12,5'h7
+,[9:5],gpio_pad_cfg_13,Pad configuration for GPIO pin 13,5'h7
+,[14:10],gpio_pad_cfg_14,Pad configuration for GPIO pin 14,5'h7
+,[19:15],gpio_pad_cfg_15,Pad configuration for GPIO pin 15,5'h7
+
+6,3,PAD_MUX_CONFIG,RW,
+,[2:0],pad_mux_cfg,Mux configuration for gpio pio fifo pins,3'b001
+
+7,32,CLK_RECV_CONFIG1,RW,
++,[15:0],clk_recv_cfg0,Reserved for bottom clock receiver configuration,16'h4000
+-,[0],en_sysref_term,,
+-,[1],en_clk_term,,
+-,[3:2],clk_cm_ctrl,,
+-,[7:4],reserved_7_4,,
+-,[9:8],ctrl_pkdet0,,
+-,[11:10],ctrl_pkdet1,,
+-,[12],en_peak_det,,
+-,[14:13],div_sel,,
+-,[15],sysref_align_trig_n,,
++,[31:16],clk_recv_cfg1,Reserved for bottom clock receiver configuration,16'h0000
+-,[21:16],reserved_7_16,,
+-,[31:22],clk_receiver_atest_ctrl,,
+
+8,32,CLK_RECV_CONFIG2,RW,
++,[15:0],clk_recv_cfg2,Reserved for bottom clock receiver configuration,16'h4937
+-,[0],ldo_en,,
+-,[1],clamp_en,,
+-,[5:2],ldo_vset,,
+-,[6],ref_sel,,
+-,[7],ldo_vset_lsb,,
+-,[8],vset_fine,,
+-,[11:9],ctrl_stgI,,
+-,[14:12],ctrl_stgII,,
+-,[15],reserved_8_15,,
++,[31:16],clk_recv_cfg3,Reserved for bottom clock receiver configuration,16'h00F4
+-,[19:16],sysref_delay,,
+-,[20],adc_sysref_mode,,
+-,[21],adc_sysref_en,,
+-,[22],dac_sysref_mode,,
+-,[23],dac_sysref_en,,
+-,[31:24],reserved_8_24,,
+
+9,1,CLK_RECV_STATUS,RO,
+,[0],sysref_noisy,Status bit shows sysref noisy or not,
+
+10,9,CLK_RX_PK_DET_REGS,RW,
+,[4:0],clk_rec_ctrl_pkdet,Peak detector controls,5'd0
+,[7:5],clk_rec_pkdet_gp,Peak detectro gp controls,3'd0
+,[8],clk_rec_en,enable clock receiver on serdes side,1'd0
+
+11,30,ANALOG_COMMON_CTRL,RW,
++,[15:0],ana_common_ctrl,Controls for analog common bias block,16'd0
+-,[0],ref_sel_v2i_ext,,
+-,[1],ref_sel_v2i_int,,
+-,[2],atest_sel_v2i,,
+-,[15:3],reserved_10_3,,
+# =========================
+# Added in F1000 REV B
+# =========================
+,[18:16],clk_term_ctrl,,3'b011
+,[21:19],sysref_term_ctrl,,3'b011
+,[23:22],cml_cmfb_ctrl,,2'b01
+,[25:24],cml_ib_ctrl,,2'b01
+,[26],en_cmfb,,1'b1
+,[28:27],stg1_rl_ctrl,,2'b01
+,[29],dig_sysref_en,,1'b1
+
+12,10,ANALOG_BGAP_CTRL,RW,
+,[0],ana_bg_en_i,Band-gap enable,1'b1
+,[1],ana_bg_force,Force band-gap start-up,1'b0
+,[5:2],ana_bg_cal_vref,Band-gap output voltage setting,4'd8
+,[9:6],ana_bg_cal_tc,Band-gap temperature compensation setting,4'd4
+
+13,16,SERDES_PHY_COMMON_CTRL,RW,
+,[15:0],sphy_common_ctrl,Controls for analog common bias block,16'd0
+
+14,10,SERDES_PHY_BGAP_CTRL,RW,
+,[0],sphy_bg_en_i,Band-gap enable,1'b1
+,[1],sphy_bg_force,Force band-gap start-up,1'b0
+,[5:2],sphy_bg_cal_vref,Band-gap output voltage setting,4'd8
+,[9:6],sphy_bg_cal_tc,Band-gap temperature compensation setting,4'd4
+
+15,1,CLK_SYS_SEL,RW,
+,[0],clk_sys_sel,Selection bit to choose either a 500 MHz or 250 MHz processor clock,1'b0

@@ -1,0 +1,118 @@
+0,32,TDC_LUT00,RW,32'h00000000
+s ,[7:0],lut_val00,LUT value 00.,
+s ,[15:8],lut_val01,LUT value 01.,
+s ,[23:16],lut_val02,LUT value 02.,
+s ,[31:24],lut_val03,LUT value 03.,
+
+1,32,TDC_LUT01,RW,32'h00000000
+s ,[7:0],lut_val04,LUT value 04.,
+s ,[15:8],lut_val05,LUT value 05.,
+s ,[23:16],lut_val06,LUT value 06.,
+s ,[31:24],lut_val07,LUT value 07.,
+
+2,32,TDC_LUT02,RW,32'h00000000
+s ,[7:0],lut_val08,LUT value 08.,
+s ,[15:8],lut_val09,LUT value 09.,
+s ,[23:16],lut_val10,LUT value 10.,
+s ,[31:24],lut_val11,LUT value 11.,
+
+3,32,TDC_LUT03,RW,32'h00000000
+s ,[7:0],lut_val12,LUT value 12.,
+s ,[15:8],lut_val13,LUT value 13.,
+s ,[23:16],lut_val14,LUT value 14.,
+s ,[31:24],lut_val15,LUT value 15.,
+
+4,32,TDC_LUT04,RW,32'h00000000
+s ,[7:0],lut_val16,LUT value 16.,
+s ,[15:8],lut_val17,LUT value 17.,
+s ,[23:16],lut_val18,LUT value 18.,
+s ,[31:24],lut_val19,LUT value 19.,
+
+5,32,TDC_LUT05,RW,32'h00000000
+s ,[7:0],lut_val20,LUT value 20.,
+s ,[15:8],lut_val21,LUT value 21.,
+s ,[23:16],lut_val22,LUT value 22.,
+s ,[31:24],lut_val23,LUT value 23.,
+
+6,32,TDC_LUT06,RW,32'h00000000
+s ,[7:0],lut_val24,LUT value 24.,
+s ,[15:8],lut_val25,LUT value 25.,
+s ,[23:16],lut_val26,LUT value 26.,
+s ,[31:24],lut_val27,LUT value 27.,
+
+7,32,TDC_LUT07,RW,32'h00000000
+s ,[7:0],lut_val28,LUT value 28.,
+s ,[15:8],lut_val29,LUT value 29.,
+s ,[23:16],lut_val30,LUT value 30.,
+s ,[31:24],lut_val31,LUT value 31.,
+
+8,9,TDC_LUT08,RW,
+s ,[7:0],lut_val32,LUT value 32.,8'h00
+  ,[8],lut_en,LUT enable.,1'b0
+
+9,19,TDC_BUS_ACCESS,RW,
+  ,[7:0],data,Bus write data.,8'h00
+  ,[15:8],addr,Bus address.,8'h00
+  ,[16],set,Set register defaults.,1'b0
+  ,[18:17],speed,Bus speed.,2'b01
+
+10,29,TDC_OFFSET_AND_GAIN,RW,
+s ,[8:0],offset_reg,Offset.,9'h000
+s ,[20:9],gain_reg,Gain.,12'h400
+  ,[23:21],offset_accu_scale,Offset calibration speed.,3'h4
+  ,[26:24],gain_accu_scale,Gain calibration speed.,3'h4
+  ,[27],offset_accu_rst_n,Offset accu reset (active low).,1'b1
+  ,[28],gain_accu_rst_n,Gain accu reset (active low).,1'b1
+
+11,7,TDC_TI_CAL,RW,
+  ,[0],offset_accu_en_reg,Enable offset accu.,1'b1
+  ,[1],gain_accu_en_reg,Enable gain accu.,1'b1
+  ,[2],ti_corr_en,Enable time interleaving correction.,1'b0
+  ,[3],ti_path_sel,Time interleaving path select.,1'b1
+  ,[4],offset_corr_mode,Offset correction mode.,1'b0
+  ,[5],gain_corr_mode,Gain correction mode.,1'b0
+  ,[6],p_sel,TDC digital clock phase select.,1'b0
+
+12,32,TDC_MISC,RW,
+  ,[0],id_en,Send channel ID to output.,1'b0
+  ,[1],tdc_res,TDC resolution 0: 8 bits 1: 9 bits,1'b0
+  ,[4:2],status_sel,Status register mode,3'b000
+  ,[5],slope_dsm_en,Enable delta sigma modulated slope control.,1'b0
+  ,[17:6],slope,VTC slope fine value.,12'h000
+  ,[19:18],slope_dac_rate,Slope DAC data rate.,2'b10
+  ,[23:20],zp_del,Zero pulses delay.,4'b0101
+  ,[25:24],pout_sel,FIFO out phase select 0: rising edge 1: falling edge,2'b00
+  ,[26],p_force,FIFO force in override mode (active low),1'b0
+  ,[27],p_ovrd,FIFO override mode,1'b0
+  ,[31:28],tdc_gp,GP controls,4'b0000
+
+13,17,TDC_CAL,RW,
+  ,[0],ave_rst,Average reset,1'b0
+  ,[2:1],ave_len,Average length,2'b11
+  ,[3],ave_sel,Select averager input data 0: post LUT 1: pre LUT,1'b1
+  ,[4],en_raw_dat,Enable raw data to averager,1'b0
+  ,[15:5],raw_dat_mask,Raw data mask,11'h3ff
+  ,[16],debug_dat_en,Enable debug data to output,1'b0
+
+14,29,TDC_DITHER,RW,
+s ,[7:0],dit_val_force0,Dither value 0,-8'd80
+s ,[15:8],dit_val_force1,Dither value 1,8'd80
+  ,[19:16],dit_force,Dither force mode,4'h0
+  ,[20],dit_en,Dither enable,1'b0
+  ,[21],dit_val_ovrd,Dither calue override,1'b0
+  ,[25:22],dit_del,Dither delay through TDC,4'h7
+  ,[27:26],dit_sel,Dither select TDC,1'b10
+  ,[28],dit_cal_freeze,Dither value calibration freeze,1'b0
+
+15,30,TDC_BIT_WEIGHTS0,RW,
+  ,[9:0],coef0,Bit 3 weigth,32
+  ,[19:10],coef1,Bit 4 weigth,64
+  ,[29:20],coef2,Bit 5 weigth,128
+
+16,30,TDC_BIT_WEIGHTS1,RW,
+  ,[9:0],coef3,Bit 6 weigth,256
+  ,[19:10],coef4,Bit 7 weigth,512
+  ,[29:20],coef5,Bit 8 weigth,1023
+
+17,32,TDC_STATUS,RO,
+  ,[31:0],status_reg,Status register,

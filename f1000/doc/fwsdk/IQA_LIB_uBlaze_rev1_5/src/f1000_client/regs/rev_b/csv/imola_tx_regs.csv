@@ -1,0 +1,136 @@
+0,28,TX_LINK_CONFIG,RW,
+,[0],sw_rst_n,SOFTWARE RESETn-RISC-V resets FRAMER Only-Chip wakes up with SOFTWARE RESET OFF,1'b1
+,[5:1],frame_size,TX Link number of octets per frame (F) minus 1.,5'd23
+,[9:6],multiframe_size,TX Link number of frames per multiframe (K) minus 1.,4'd15
+,[10],subclass,Subclass 0 or Subclass 1 selection.,1'b1
+,[11],disable_sysref_monitor,Disable error count of periodic SYSREF misalignment.,1'b0
+,[12],disable_sysref_realign,Disable periodic SYSREF realignment.,1'b1
+,[13],force_resync,Forcefully issue a link re-synchronization on all TX lanes.,1'b0
+,[15:14],extra_mframes_after_sync,# of multi-frames of /K/ beyond SYNC~,2'h0
+,[16],hw_enable_framer_controller,Enable bit to syncronize start of all framers.,1'b0
+,[17],shift_ping_pong,Bit to change LSB/MSB relationship of ping_pong buffer.,1'b0
+,[21:18],rd_tl2ll_fifo_threshold,Threshold for reading the TL2LL_FIFO.,4'd8
+,[22],en_rx2tx_lpbk,Enable the 10-bit RX data per lane to be looped back FROM RX to the TX.,1'b0
+,[23],sw_rst_n_rx2tx_lpbk_fifo,SOFTWARE RESETn of rx2tx_lpbk_fifo.,1'b1
+,[24],en_tx2rx_lpbk,Enable the 10-bit TX data per lane to be looped back FROM TX to the RX.,1'b0
+,[25],sw_rst_n_tx2rx_lpbk_fifo,SOFTWARE RESETn of tx2rx_lpbk_fifo.,1'b1
+,[26],tx_pol,TX Polarity 1-generated pattern is inverted 0-generated pattern is not inverted,1'b0
+,[27],byte_swap,Swap HI / LO byte out from TL2LL FIFO prior to sending to Link Layer,1'b0
+
+1,2,TX_LINK_ENABLE,RW,
+,[0],link0_enable,Link enable for Link 0,1'b1
+#,[1],link1_enable,Link enable for Link 1,1'b0
+,[1],tx_enable,TX Path global enable,1'b1
+
+2,16,TX_SYSREF_MISALIGN_COUNT,RO,
+,[15:0],sysref_misalign_cnt,Count of SYSREF to LMFC misalignment errors detected.,
+
+3,8,TX_LANE_ENABLE,RW,
+,[7:0],tx_lane_enable,Enable bits for TX Lanes.,8'h00
+
+4,3,TX_SCRAMBLE_CONFIG,RW,
+,[0],tx_scramble,Force the scrambler on in the TX block.,1'b0
+,[1],tx_early_sync,Enable early synchronization of the scrambler.,1'b1
+,[2],tx_allow_cfg_scr,Allow ILAS config to set scramble mode.,1'b1
+
+5,24,TX_DEBUG,RW,
+,[0],rnd_en,rnd_en for transport layer.,1'b0
+,[1],short_test_en,Transport Layer Short Test Enable.,1'b0
+,[2],debug_mode,DEBUG Mode,1'b0
+,[3],inject_adc_sample,Inject ADC Samples to Transport Layer,1'b0
+,[6:4],sel_linklayer_in,Select what linklayer_in is MUXed to link_layer_in_2_reg,3'b000
+,[14:7],manual_tx_goto_data,Manual TX lane mode goto data state enables,8'h00
+,[23:15],manual_tx_early_release_cnt,Manual TX data state early FIFO release count (clocks),9'd8
+
+6,4,TX_FCLK_STATUS,RO, 
+,[0],fclk_lmfc_aligned,Indicates LMFC is aligned.,
+,[3:1],tx_sync_n,Current status of tx_sync_n pins.,
+
+7,29,TX_CGS_ILAS_CONFIG_1,RW,
+,[7:0],ilas_mframes,Number of multiframes in the ILAS align stage minus 1.,3'h3
+,[10:8],ilas_dummy_data_option,Option for ILAS dummy data.,3'h0
+,[18:11],fclks_between_ilas_and_sync_n,Number of FCLKs between ILAS & SYNC~ inactive.,8'h0
+,[19],dont_align_ilas_to_lmfc,Don't align ILAS to LMFC.,1'b0
+,[20],enable_nmcda_sl,Enable No Multiple Converter Device Align_Single Lane mode.,1'b0
+,[28:21],ilas_early_data_release,Number of CLK_LINKLAYER_1P6GIG cycles before ILAS_DONE that ilas_mframe_cnt reaches in tx_cgs_ilas_fsm before allowing write into the TL2LL_FIFO.,8'h3
+
+8,16,TX_CGS_ILAS_CONFIG_2,RW,
+,[0],ilas_config_scramble,ILAS config scramble.,1'h0
+,[5:1],ilas_config_bits_per_sample,ILAS config number of bits per sample.,4'hf
+,[10:6],ilas_config_samples_per_converter_per_frame, ILAS config number of samples per converter per frame.,5'hf
+,[15:11],ilas_config_converter_resolution,Converter resolution ... number of bits (N) minus 1.,5'hf
+
+9,13,TX_CGS_ILAS_CONFIG_3,RW,
+,[7:0],ilas_config_converters_per_device,ILAS config number of converters(ADC's) per device(link).,8'h8
+,[11:8],ilas_config_lane,Lane number for dynamic ILAS config data,4'h0
+,[12],tx_cgs_ilas_disable,Disables ILAS state machines,1'h0
+
+10,16,TX_CGS_ILAS_CONFIG_4,RW,
+,[7:0],ilas_config_reserved_byte1,ILAS config Reserved Byte 1.,8'h0
+,[15:8],ilas_config_reserved_byte2,ILAS config Reserved Byte 2.,8'h0
+
+11,2,TX_SYNC_CONFIG,RW,
+,[0],malformed_sync_is_resync,"Action if sync_n is malformed: 0 for error, 1 for resync.",1'b0
+,[1],misaligned_sync_is_resync,"Action if sync_n is misaligned: 0 for error, 1 for resync.",1'b0
+
+12,16,TX_SYNC_ERRORS_LINK0_1,RO,
+,[3:0],err_pulse_less_than_2fper_cnt_0,Counts the # of error_pulses that are less than 2 Frame Clock Periods wide for LINK0.,
+,[7:4],err_pulse_less_than_1fper_cnt_0,Counts the # of error_pulses that are less than 1 Frame Clock Period wide for LINK0.,
+,[11:8],err_pulse_2fper_cnt_0,Counts the # of error_pulses that are 2 FRAME PERIODs wide for LINK0.,
+,[15:12],err_pulse_1fper_cnt_0,Counts the # of error_pulses that are 1 FRAME PERIOD wide for LINK0.,
+
+13,8,TX_SYNC_ERRORS_LINK0_2,RO,
+,[3:0],err_pulse_less_than_4fper_cnt_0,Counts the # of error_pulses that are less than 4 Frame Clock Periods wide for LINK0.,
+,[7:4],misaligned_sync_cnt_0,Counts the number of misaligned syncs between Resync's for LINK0.,
+
+14,16,TX_SYNC_ERRORS_LINK0_3,RO,
+,[7:0],total_misaligned_syncs_0,Counts the total # of misaligned SYNC_N_LOW pulses for LINK0.,
+,[15:8],total_malformed_syncs_0,Counts the total # of malformed SYNC_N_LOW pulses for LINK0.,
+
+15,8,TX_ALIGN_DELAY,RW,
+,[7:0],sysref_align_delay,SYSREF to LMFC (Subclass 1) delay in CLKs,8'h1
+
+16,8,LINKLAYER_IN_2_REG,RO,
+,[7:0],linklayer_in_2_reg,Registered MUXed linklayer_in's,
+
+17,8,TX_ATEST_CTRL,RW,
+,[7:0],tx_atest_ctrl,TX atest control bus,8'h0
+
+18,1,INJECT_TX_BIT_ERROR,RW,
+a,[0],inj_tx_bit_err,Inject TX Bit Error-Self_Clears when inj_tx_bit_err_ack_n is 0,1'b0
+
+19,20,LANE0_TX_BIT_ERROR_MASK_DELAY,RW,
+,[9:0],lane0_error_mask,Bit-by-bit Error Mask for LANE0,10'h000
+,[19:10],lane0_en_bit_delay,Bit-by-bit Enable Delay for LANE0,10'h000
+
+20,20,LANE1_TX_BIT_ERROR_MASK_DELAY,RW,
+,[9:0],lane1_error_mask,Bit-by-bit Error Mask for LANE1,10'h000
+,[19:10],lane1_en_bit_delay,Bit-by-bit Enable Delay for LANE1,10'h000
+
+21,20,LANE2_TX_BIT_ERROR_MASK_DELAY,RW,
+,[9:0],lane2_error_mask,Bit-by-bit Error Mask for LANE2,10'h000
+,[19:10],lane2_en_bit_delay,Bit-by-bit Enable Delay for LANE2,10'h000
+
+22,20,LANE3_TX_BIT_ERROR_MASK_DELAY,RW,
+,[9:0],lane3_error_mask,Bit-by-bit Error Mask for LANE3,10'h000
+,[19:10],lane3_en_bit_delay,Bit-by-bit Enable Delay for LANE3,10'h000
+
+23,20,LANE4_TX_BIT_ERROR_MASK_DELAY,RW,
+,[9:0],lane4_error_mask,Bit-by-bit Error Mask for LANE4,10'h000
+,[19:10],lane4_en_bit_delay,Bit-by-bit Enable Delay for LANE4,10'h000
+
+24,20,LANE5_TX_BIT_ERROR_MASK_DELAY,RW,
+,[9:0],lane5_error_mask,Bit-by-bit Error Mask for LANE5,10'h000
+,[19:10],lane5_en_bit_delay,Bit-by-bit Enable Delay for LANE5,10'h000
+
+25,20,LANE6_TX_BIT_ERROR_MASK_DELAY,RW,
+,[9:0],lane6_error_mask,Bit-by-bit Error Mask for LANE6,10'h000
+,[19:10],lane6_en_bit_delay,Bit-by-bit Enable Delay for LANE6,10'h000
+
+26,20,LANE7_TX_BIT_ERROR_MASK_DELAY,RW,
+,[9:0],lane7_error_mask,Bit-by-bit Error Mask for LANE7,10'h000
+,[19:10],lane7_en_bit_delay,Bit-by-bit Enable Delay for LANE7,10'h000
+
+27,16,LANE_IF_CTRL,RW,
+,[7:0],lane_if_delay,Per TX lane interface delay control,8'h0
+,[15:8],lane_clk_enables,Per TX lane gated clock enable,8'h00

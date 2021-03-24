@@ -1,0 +1,160 @@
+0,32,EXT_ADC_CAL_CTRL,RW,
+,[1:0],cal_sel,Calibration Select,2'h0
+,[2],init_en,Initialize Enable,1'b0
+,[3],tdc_cal_en,TDC Calibration Enable,1'b0
+,[4],vtc_lut_cal_en,VC Lookup Table Calibration Enable,1'b0
+,[5],bgr_cal_en,Background Calibration Enable,1'b0
+,[6],ti_cal_en,Time Interleave Calibration Enable,1'b0
+,[7],timing_cal_en,Timing Calbiration Enable,1'b0
+,[8],dual_adc_share_mode,DUAL ADC Share mode,1'b0
+,[9],pause_on_cal_error,Pause on Calibration Error,1'b0
+,[11:10],ilv_mode,Interleave Mode,2'h0
+,[12],step_by_step,Step by Step mode,1'b0
+,[15:13],ctrl_spare,Spare control bits,3'h0
+,[16],cal_paused,Calibration Paused,1'b0
+,[17],cal_error,Calibration Error,1'b0
+,[19:18],cal_error_blk,Calibration Error Block,2'h0
+,[23:20],cal_error_code,Calibration Error Code,4'h0
+,[31:24],cal_error_val,Calibration Error Value,8'h0
+
+1,32,EXT_ADC_RUN_CTRL,RW,
+,[0],ext_ctrl_req,Control Request,1'b0
+,[1],ext_status_req,Status Request,1'b0
+,[2],ext_access_ack,Access Ack,1'b0
+,[3],cal_pause,Pause,1'b0
+,[4],cal_cont,Continue,1'b0
+,[5],cal_reset,Reset,1'b0
+,[6],cal_restart,Restart,1'b0
+,[7],run_ctrl_spare,Spare control bit,1'b0
+,[8],adc_bus_read_req,Bus Read Request,1'b0
+,[9],adc_bus_write_req,Bus Write Request,1'b0
+,[11:10],adc_bus_blk,Bus Block,2'h0
+,[13:12],delrange,Del range,2'h0
+,[15:14],tdc_clk_pw,TDC Clock Pulse Width,2'h0
+,[21:16],vtc_slope,VTC Slope,6'h0
+,[22],vtc_slope_dsm_en,VTC SLOPE DSM Enable,1'b0
+,[27:23],vtc_comp_th,VTC Compensation THreshold,5'h0
+,[29:28],vtc_pulse_wdth,VTC Pluse Width,2'h0
+,[31:20],tdc_clk_del,TDC Clock delay,12'h0
+
+2,32,OOPS3,RW,
+,[31:0],oops3,Extra register bits just in case,32'h0
+
+3,32,OOPS4,RW,
+,[31:0],oops4,Extra register bits just in case,32'h0
+
+4,32,OOPS5,RW,
+,[31:0],oops5,Extra register bits just in case,32'h0
+
+5,16,TIMER_CONTROL_ATTEN,RW,
+,[15:0],timer_atten,Timed counter to self clear atten_0 bit,16'h2710
+
+6,1,ATTEN,RW,
+a,[0],atten_ctrl,Self clear atten bit after 't' units,1'b0
+
+7,6,RX_TX_GP,RW,
+,[0],tx_rx_loopback,TX to RX loopback enable,1'b0
+,[1],rx_polar,RX Linear or Circular polarization,1'b0
+,[2],tx_polar,TX Linear or Circular polarization,1'b0
+,[5:3],frame_format,Frame format definition,3'b000
+
+8,4,FORCE_FRAME_SYNC,RW,
+,[2:0],force_frame_sync_dummy,Dummy bits to retain FW values,3'b000
+,[3],force_frame_sync,force frame_sync to high,1'b0
+
+9,2,ADC_DAC_LOOPBACK_EN,RW,
+,[0],adc_dac_loopback,Loop back from adc_dsp to dac_dsp enable,1'b0
+,[1],dac_adc_loopback,Loop back from dac_dsp to adc_dsp enable,1'b0
+
+10,2,ATTEN_DRIVER_CTRL,RW,
+,[0],lane_err_bits_en,Lane error enable,1'b0
+,[1],sync_loss_en,Synchronization link loss enable,1'b0
+
+11,1,MEM_CAP_TRIGGER1,RW,
+a,[0],adc1_trigger,Write "1" to generate a pulse to ADC_MEM_CAP1; this bit is a self-clear bit,1'b0
+
+12,1,MEM_CAP_TRIGGER2,RW,
+a,[0],adc2_trigger,Write "1" to generate a pulse to ADC_MEM_CAP2; this bit is a self-clear bit,1'b0
+
+13,1,TEST_MEM_CAP_TRIGGER1,RW,
+a,[0],test_adc1_trigger,Write "1" to generate a pulse to TEST_ADC_MEM_CAP1; this bit is a self-clear bit,1'b0
+
+14,1,TEST_MEM_CAP_TRIGGER2,RW,
+a,[0],test_adc2_trigger,Write "1" to generate a pulse to TEST_ADC_MEM_CAP2; this bit is a self-clear bit,1'b0
+
+15,32,DAC_COMP_MULT_DUMMY,RO,
+,[31:0],dac_comp_mult_dummy,connect to floating output signals,
+
+16,32,OUT_DATA_DUMMY5,RO,
+,[31:0],dummy5,connect to floating output signals,
+
+17,32,OUT_DATA_DUMMY6,RO,
+,[31:0],dummy6,connect to floating output signals,
+
+18,32,OUT_DATA_DUMMY7,RO,
+,[31:0],dummy7,connect to floating output signals,
+
+19,32,OUT_DATA_DUMMY8,RO,
+,[31:0],dummy8,connect to floating output signals,
+
+20,32,OUT_DATA_DUMMY9,RO,
+,[31:0],dummy9,connect to floating output signals,
+
+21,32,OUT_DATA_DUMMY10,RO,
+,[31:0],dummy10,connect to floating output signals,
+
+22,32,OUT_DATA_DUMMY11,RO,
+,[31:0],dummy11,connect to floating output signals,
+
+23,32,OUT_DATA_DUMMY12,RO,
+,[31:0],dummy12,connect to floating output signals,
+
+24,32,OUT_DATA_DUMMY13,RO,
+,[31:0],dummy13,connect to floating output signals,
+
+25,32,OUT_DATA_DUMMY14,RO,
+,[31:0],dummy14,connect to floating output signals,
+
+26,32,OUT_DATA_DUMMY15,RO,
+,[31:0],dummy15,connect to floating output signals,
+
+27,32,OUT_DATA_DUMMY16,RO,
+,[31:0],dummy16,connect to floating output signals,
+
+28,32,OUT_DATA_DUMMY17,RO,
+,[31:0],dummy17,connect to floating output signals,
+
+29,11,CORE_DUMMY,RO,
+,[10:0],dummy_core_data,connect to floating output signals,
+
+30,1,MEM_PLAY_TRIGGER1,RW,
+a,[0],dac1_trigger,Write "1" to generate a pulse to DAC_MEM_PLAY1; this bit is a self-clear bit,1'b0
+
+31,1,MEM_PLAY_TRIGGER2,RW,
+a,[0],dac2_trigger,Write "1" to generate a pulse to DAC_MEM_PLAY2; this bit is a self-clear bit,1'b0
+
+32,1,TEST_MEM_PLAY_TRIGGER1,RW,
+a,[0],test_dac1_trigger,Write "1" to generate a pulse to TEST_DAC_MEM_PLAY1; this bit is a self-clear bit,1'b0
+
+33,1,TEST_MEM_PLAY_TRIGGER2,RW,
+a,[0],test_dac2_trigger,Write "1" to generate a pulse to TEST_DAC_MEM_PLAY2; this bit is a self-clear bit,1'b0
+
+34,17,LMFC_IRQ_CONTROL,RW,
+,[0],enable_lmfc_count,Enables count of received LMFC pulses,1'b0
+,[16:1],lmfc_irq_compare,LMFC counter compare value for IRQ generation.,16'h0
+
+35,16,LMFC_COUNTER,RO,
+,[15:0],lmfc_counter,Count of LMFC pulses since last LMFC IRQ ACK,
+
+36,1,LMFC_IRQ_ACK,RW,
+b,[0],lmfc_irq_ack,Writing 1 acknowledged the LMFC IRQ and resets LMFC counter to zero.  Self clearing,1'b0
+
+37,32,OOB_TO_GC,RW,
+b,[31:0],oob_to_gc,OOB to Gottardo Core 32-bit Comms register.  Writing non-zero will generate GC interrupt.,32'h0
+
+38,1,OOB_IRQ_ACK,RW,
+b,[0],oob_irq_ack,Acknowledge bit for OOB to GC comms IRQ,1'b0
+
+39,32,GC_TO_OOB,RW,
+,[31:0],gc_to_oob,Gottardo Core to OOB 32-bit Comms register.,32'h0
+

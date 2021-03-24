@@ -1,0 +1,116 @@
+0,21,RX_LINK_CONFIG,RW,
+,[0],sw_rst_n,SOFTWARE RESETn-RISC-V resets FRAMER Only-Chip wakes up with SOFTWARE RESET OFF,1'b1
+,[5:1],frame_size,RX Link number of octets per frame (F) minus 1.,5'd23
+,[9:6],multiframe_size,RX Link number of frames per multi frame (K) minus 1.,4'd15
+,[10],subclass,Subclass 0 or Subclass 1 selection.,1'b1
+,[11],disable_reconfig,Disable lane dynamic reconfig from ILAS configuration.,1'b1
+,[12],disable_sysref_monitor,Disable error count of periodic SYSREF misalignment.,1'b0
+,[13],disable_sysref_realign,Disable periodic SYSREF realignment.,1'b1
+,[14],force_resync,Forcefully issue a link re-synchronization on all RX lanes.,1'b0
+,[15],hw_enable_framer_controller,This allow all lanes to be enabled at the same time for synchronization,1'b0
+,[16],shift_ping_pong,shifts ping_pong signal by 1 cycle for the sake of alignment,1'b0
+,[20:17],rd_ll2tl_fifo_threshold,Threshold for reading the LL2TL_FIFO.,4'd8
+
+1,4,RX_LINK_ENABLE,RW,
+,[0],link0_enable,Link enable for Link 0,1'b1
+,[1],link1_enable,Link enable for Link 1,1'b0
+,[2],rx_enable,RX Path global enable,1'b1
+,[3],dual_link,Enable bit for dual link mode.,1'b0
+
+2,16,RX_COMMA_CONFIG,RW,
+,[7:0],lock_threshold,Successive /K/ (comma) symbols for CGS lock minus 1.,8'h3
+,[15:8],resync_threshold,Number of received /K/ (comma) symbols in data state for resync minus 1.,8'h5
+
+3,8,RX_ALIGN_CONFIG,RW,
+,[7:0],sysref_align_delay,Number of clocks to delay from SYSREF to LMFC.,8'h1
+
+4,16,RX_CGS_CONFIG,RW,
+,[7:0],rx_cgs_check_clr_count,Symbol count prior to clearing errors after CHECK state.,8'h8
+,[8],rx_cgs_fsm_disable,Disable the RX CGS FSM for all lanes.,1'b0
+,[15:9],rx_resync_delay,Number of FCLK periods to delay after re-sync prior to CGS retry.,8'hf
+
+5,16,RX_SYSREF_MISALIGN_COUNT,RO,
+,[15:0],sysref_misalign_cnt,Count of SYSREF to LMFC misalignment errors detected.,
+
+6,8,RX_LANE_ENABLE,RW,
+,[7:0],rx_lane_enable,Enable bits for RX Lanes.,8'h0
+
+7,16,RX_ILAS_CONFIG,RW,
+,[7:0],rx_ilas_multiframes,Number of multiframes in the ILAS align stage minus 1.,8'h3
+,[8],rx_ilas_disable,Disable for the ILAS state machines.,1'b0
+,[9],rx_ilas_disable_align_error,Disable of ILAS alignment error checking.,1'b0
+,[10],disable_align_mon,Disable lane alignment monitoring.,1'b0
+,[11],disable_autorealign,Disable automatic lane realignment.,1'b1
+,[12],enable_nmcda_sl,Enable No Multiple Converter Device Align/Single Lane mode.,1'b0
+,[15:13],ilas_config_lane,Lane number to use for dynamic configuration data.,3'h0
+
+8,3,RX_SCRAMBLE_CONFIG,RW,
+,[0],rx_scramble,Force the scrambler on in the RX block.,1'b0
+,[1],rx_early_sync,Enable early synchronization of the descrambler.,1'b1
+,[2],rx_allow_cfg_scr,Allow ILAS config to set scramble mode.,1'b1
+
+9,16,RX_OUT_TIMING,RW,
+,[7:0],out_fclk_delay,Number of Frame Clock delays before output to DAC after all lanes aligned (Subclass 0).,8'h1
+,[12:8],out_early_count,Number of Frame Clocks to output to DAC prior to next LMFC (Subclass 1).,8'h0
+,[15:13],out_lmfc_count,Number of LMFC periods to delay before output to DAC.,3'h0
+
+10,16,RX_TRANSPORT_CONFIG,RW,
+,[4:0],rx_cfg_m,Number of DAC devices per link (M) minus 1.,5'h7
+,[9:5],rx_cfg_n,Converter resolution ... number of bits (N) minus 1.,5'hf
+,[14:10],rx_cfg_nprime,Number of bits RX per sample (N') minus 1.,4'hf
+,[15],rx_cfg_s,Number of samples per frame (S) minus 1.,1'h1
+
+11,9,RX_DEBUG,RW,
+,[0],allow_sim_error,Allow simulated /K28.1/ errors.,8'b1
+,[1],short_test_en,Transport Layer Short Test Enable.,1'b0
+,[5:2],short_test_sel,Selection of DAC output for Short Test,4'h0
+,[8:6],sel_linklayer_out,Select what lane's linklayer_out is MUXed to linklayer_out_2_reg,3'b000
+
+12,13,RX_FCLK_AND_LINKLAYER_STATUS,RO,
+,[0],fclk_lmfc_aligned,LMFC Aligned indication.,
+,[1],fclk_fsm_lock,Indicates the FCLK state machine has locked.,
+,[2],link0_read_enable,Indicates all lanes in link0 are in DATA STATE.,
+,[3],link1_read_enable,Indicates all lanes in link1 are in DATA STATE.,
+,[12:4],linklayer_out_2_reg,Registered MUXed linklayer_out's for observability.,
+
+13,8,RX_D21_5_THRESHOLD,RW,
+,[7:0],d21_5_lock_thresh,Successive /D21_5/ symbols for test_repeat_d21_5 mode minus 1.,8'h3
+
+14,16,PHY_ATEST_CTRL,RW,
+,[15:0],phy_atest_ctrl,Atest control bus,16'd0
+
+15,16,RX_GP,RW,
+,[15:0],rx_gp,General purpose for rx,16'd0
+
+16,8,DLL1_ATEST_CTRL,RW,
+,[7:0],dll_atest_ctrl,DLL atest control bus,8'd0
+
+17,12,DLL_CTRL_REGS,RW,
+,[3:0],dll_ctrl,DLL control,4'b1000
+,[5:4],dll_strt_del,DLL start delay,2'b00
+,[7:6],dll_cp_opamp_bias_ctrl,bias control for CP opamp of DLL,2'b00
+,[9:8],dll_cml_bias_ctrl,DLL CML bias control,2'b10
+,[11:10],dll_cp_s2d_bias_ctrl,DLL CP S2D bias control,2'b00
+
+18,8,DLL_CPPFD_CTRL_REGS,RW,
+,[0],dll_pfd_dly,DLL PFD delay,1'b0
+,[3:1],dll_cp_curr_ctrl,DLL CP current control,3'b011
+,[4],dll_cp_en,DLL CP enable,1'b1
+,[7:5],dll_cap_ctrl_b,DLL CP cap control,3'b100
+
+19,12,DLL_VCDL_DLY_REGS,RW,
+,[3:0],dll_vcdl_del1,DLL VCDL stage 1 delay,4'b0010
+,[7:4],dll_vcdl_del2,DLL VCDL stage 2 delay,4'b0010
+,[11:8],dll_vcdl_del3,DLL VCDL stage 3 delay,4'b1000
+
+20,2,DLL_DUTY_CYL_REGS,RW,
+,[1:0],dll_duty_cycle,DLL duty cycle control,2'b00
+
+21,1,DLL_RSTN_REGS,RW,
+,[0],dll_rst_n,DLL rst_n,1'b1
+
+22,8,DLL_GP,RW,
+,[7:0],dll_gp,General purpose bits for DLL,8'd3
+
+23,4,DLL_LOCK_DETECT,RO,
+,[3:0],dll_lock_detect,4_bit encoding of detected DLL LOCK from SERDES.,

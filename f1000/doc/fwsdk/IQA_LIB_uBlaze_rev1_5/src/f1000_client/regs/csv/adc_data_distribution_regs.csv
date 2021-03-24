@@ -1,0 +1,55 @@
+0,16,LANE0_FANOUT_ENABLE,RW,
+,[3:0],adc1_band0_lane0_en,ADC1_Band0_Lane0,4'h0
+,[7:4],adc1_band1_lane0_en,ADC1_Band1_Lane0,4'h0
+,[11:8],adc2_band0_lane0_en,ADC2_Band0_Lane0,4'h0
+,[15:12],adc2_band1_lane0_en,ADC2_Band1_Lane0,4'h0
+
+1,16,LANE1_FANOUT_ENABLE,RW,
+,[3:0],adc1_band0_lane1_en,ADC1_Band0_Lane1,4'h0
+,[7:4],adc1_band1_lane1_en,ADC1_Band0_Lane1,4'h0
+,[11:8],adc2_band0_lane1_en,ADC2_Band0_Lane1,4'h0
+,[15:12],adc2_band1_lane1_en,ADC2_Band1_Lane1,4'h0
+
+2,16,LANE2_FANOUT_ENABLE,RW,
+,[3:0],adc1_band0_lane2_en,ADC1_Band0_Lane2,4'h0
+,[7:4],adc1_band1_lane2_en,ADC1_Band1_Lane2,4'h0
+,[11:8],adc2_band0_lane2_en,ADC2_Band0_Lane2,4'h0
+,[15:12],adc2_band1_lane2_en,ADC2_Band1_Lane2,4'h0
+
+3,16,LANE3_FANOUT_ENABLE,RW,
+,[3:0],adc1_band0_lane3_en,ADC1_Band0_Lane3,4'h0
+,[7:4],adc1_band1_lane3_en,ADC1_Band1_Lane3,4'h0
+,[11:8],adc2_band0_lane3_en,ADC2_Band0_Lane3,4'h0
+,[15:12],adc2_band1_lane3_en,ADC2_Band1_Lane3,4'h0
+
+4,16,LANE4_FANOUT_ENABLE,RW,
+,[3:0],adc1_band0_lane4_en,ADC1_Band0_Lane4,4'h0
+,[7:4],adc1_band1_lane4_en,ADC1_Band1_Lane4,4'h0
+,[11:8],adc2_band0_lane4_en,ADC2_Band0_Lane4,4'h0
+,[15:12],adc2_band1_lane4_en,ADC2_Band1_Lane4,4'h0
+
+5,16,LANE5_FANOUT_ENABLE,RW,
+,[3:0],adc1_band0_lane5_en,ADC1_Band0_Lane5,4'h0
+,[7:4],adc1_band1_lane5_en,ADC1_Band1_Lane5,4'h0
+,[11:8],adc2_band0_lane5_en,ADC2_Band0_Lane5,4'h0
+,[15:12],adc2_band1_lane5_en,ADC2_Band1_Lane5,4'h0
+
+6,16,LANE6_FANOUT_ENABLE,RW,
+,[3:0],adc1_band0_lane6_en,ADC1_Band0_Lane6,4'h0
+,[7:4],adc1_band1_lane6_en,ADC1_Band1_Lane6,4'h0
+,[11:8],adc2_band0_lane6_en,ADC2_Band0_Lane6,4'h0
+,[15:12],adc2_band1_lane6_en,ADC2_Band1_Lane6,64'h0
+
+7,16,LANE7_FANOUT_ENABLE,RW,
+,[3:0],adc1_band0_lane7_en,ADC1_Band0_Lane7,4'h0
+,[7:4],adc1_band1_lane7_en,ADC1_Band1_Lane7,4'h0
+,[11:8],adc2_band0_lane7_en,ADC2_Band0_Lane7,4'h0
+,[15:12],adc2_band1_lane7_en,ADC2_Band1_Lan7,4'h0
+
+8,1,IQ_POSITION_CONTROL,RW,
+,[0],iq_pos,IQ Position control,1'b1
+
+9,10,TEST_MODE_1,RW,
+,[0],test_mode_sel_adc1,Test bus enable for ADC1 distribution logic,1'b0
+,[1],test_mode_sel_adc2,Test bus enable for ADC2 distribution logic,1'b0
+,[9:2],dac_data_distr_flush,Software bits ANDed with input data on the TX distribution side,8'h0

@@ -1,0 +1,62 @@
+0,8,OOB_PROC_CONTROL,RW,
+,[0],sw_rst_n,SOFTWARE RESETn-RISC-V resets FRAMER Only-Chip wakes up with SOFTWARE RESET OFF,1'b1
+,[1],enable_framer_controller,OOB PROCESSOR enables FRAMER CONTROLLER - Chip wakes up with framer_controller disabled,1'b0
+,[7:2],oob_bits_wr_addr,Write address for manually writing to OOB bit registers,6'h0
+
+1,25,OOB_PROC_STATUS,RO,
+,[5:0],dptr_addr_reg,DPTR from MERLIN to address OOB_REGS,
+,[10:6],aptr,APTR - Read Address of AXI ADDR REGISTER FILE,
+,[11],few_axi_fifo_write,WRITE Request to OOB_AXIFACE,
+,[12],few_axi_bus_read,READ Request to OOB_AXIFACE,
+,[13],ready4write,OOB AXIFACE is ready for WRITE request from OOB PROCESSOR,
+,[14],ready4read,OOB AXIFACE is ready for READ request from OOB PROCESSOR,
+,[15],axi_rd_data_valid,AXI BUS READ Data is VALID - send to OOB PROCESSOR,
+,[16],axi_rd_data_valid_ack,OOB PROCESSOR acknowledges axi_rd_data_valid,
+,[17],axi_wr_fifo_full,AXI BUS WRITE FIFO is FULL,
+,[18],axi_wr_fifo_overflow,AXI BUS WRITE FIFO OVERFLOW,
+,[19],axi_wr_fifo_empty,AXI BUS WRITE FIFO is EMPTY,
+,[20],axi_wr_fifo_underflow,AXI BUS WRITE FIFO UNDERFLOW,
+,[21],lane_error_detect,LANE Error Detected in at least 1 of 8 RX lanes,
+,[22],rst_tl2ll_fifo,rst_tl2ll_fifo from FRAMER CONTROLLER,
+,[23],fst_wait_complete,fst_wait_complete from FRAMER CONTROLLER,
+,[24],fst_wait_opcode_triggers,fst_wait_opcode_triggers from FRAMER CONTROLLER,
+
+2,32,OOB_REGS2DP,RO,
+,[31:0],oob_regs2dp,DATA PROCESSOR 32-bit input-addressed by DPTR,
+
+3,32,AXI_BUS_FIFO_WR_DATA,RO,
+,[31:0],axi_bus_fifo_wr_data,WR_Data from OOB to AXI,
+
+4,32,AXI_BUS_FIFO_RD_DATA,RO,
+,[31:0],axi_bus_fifo_rd_data,RD_Data from AXI to OOB,
+
+5,32,AXI_BUS_FIFO_ADDR,RO,
+,[31:0],axi_bus_fifo_addr,AXI Bus Address from OOB PROCESSOR,
+
+6,2,OOB_PROC_ERROR_BITS,RO,
+,[0],axi_write_read_both_on_err_bit,FEW has both AXI_FIFO_WRITE and AXI_BUS_READ,
+,[1],axi_write_when_fifo_full_err_bit,FIFO_WRITE when FIFO is FULL,
+
+7,3,OOB_PROC_SELF_CLEAR_ERROR_BITS,RW,
+b,[0],cl_axi_write_read_both_on,RISC-V Clears axi_write_read_both_on_err_bit,1'b0
+b,[1],cl_axi_write_when_fifo_full,RISC-V Clears axi_write_when_fifo_full_err_bit,1'b0
+b,[2],cl_write_oob_regs,Write to OOB bit registers,1'b0
+
+8,32,OOB_REGS2PERIPH,RO,
+,[31:0],oob_regs2periph,Pipe 32bits of the 192-bit OOB_BITS_PER_LANE,
+
+9,32,FRAME_FMT_TABLE2PERIPH,RO,
+,[31:0],frame_fmt_table2periph,Pipe 32bits of the Frame Format Table,
+
+# =====================================
+# 9-15 used for TABLE2PERIPH
+# =====================================
+16,32,OOB_BIT_REG_DATA,RW,
+,[31:0],oob_bit_reg_data,OOB bit data when writing to OOB bit registers,32'h0
+
+17,32,OOB_MATH_REG_1,RW,
+,[31:0],oob_math_reg_1,OOB math arg reg 1,32'h0
+
+18,32,OOB_MATH_REG_2,RW,
+,[31:0],oob_math_reg_2,OOB math arg reg 2,32'h0
+

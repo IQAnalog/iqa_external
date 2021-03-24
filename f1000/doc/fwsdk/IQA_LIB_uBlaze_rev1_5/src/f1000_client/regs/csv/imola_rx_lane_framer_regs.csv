@@ -1,0 +1,37 @@
+0,14,RX_LANE_FRAMER_CONTROL,RW,
+,[0],rx_lane_framer_sw_rst_n,Active-Low SOFTWARE RESETn - RISC-V resets FRAMER Only - Chip wakes up with SOFTWARE RESET OFF,1'b1
+,[1],zero_ll2tl_fifo_out,Zero out LL2TL_FIFO_OUT from LINKLAYER,1'b1
+,[2],use_dac_test_samp,Use DAC_TEST_SAMP for testing,1'b0
+,[6:3],oobreg_rdAddr,OOBREG READ ADDRESS just for testing the OOB REGISTER FILE,4'b0000
+,[12:7],rx_lane_fifo_rd_threshold, Threshold for READING the RX_LANE_FIFO,6'd24
+,[13],ll2tl_data_swap_msb_lsb,Swap MSB / LSB data received from RX Link Layer,1'b0
+
+1,32,RX_LANE_AND_FRAMER_FIFO_STATUS,RO,
+,[0],rx_lane_fifo_empty,RX Lane FIFO is EMPTY,
+,[1],rx_lane_fifo_underflow,RX Lane FIFO_UNDERFLOW,
+,[2],rx_lane_fifo_full,RX Lane FIFO is FULL,
+,[3],rx_lane_fifo_overflow,RX Lane FIFO_OVERFLOW,
+,[9:4],rx_lane_fifo_counter,Number of RX Lane FIFO entries,
+,[10],rx_framer_fifo_empty,RX Framer FIFO is EMPTY,
+,[11],rx_framer_fifo_underflow,RX Framer FIFO UNDERFLOW,
+,[12],rx_framer_fifo_full,RX Framer FIFO is FULL,
+,[13],rx_framer_fifo_overflow,RX Framer FIFO OVERFLOW,
+,[17:14],rx_framer_fifo_counter,Number of RX Framer FIFO entries,
+,[21:18],ll2tl_fifo_rd_addr_out,LL2TL_FIFO Read Address,
+,[25:22],ll2tl_fifo_wr_addr_out,LL2TL_FIFO Write Address,
+,[26],error_in_ll2tl_fifo_out,There is error either in the 9-bit MSB or 9-bit LSB of LL2TL_FIFO data from LINKLAYER,
+,[27],error_in_ll2tl_fifo_out_oobmode,There is error in LL2TL_FIFO data from LINKLAYER while in OOB MODE,
+,[28],rchd_ll2tl_fifo_thresh,Reached the TL2LL_FIFO THRESHOLD for Reading,
+,[29],rx_lane_fifo_read_ready,Reached the RX_LANE_FIFO THRESHOLD for Reading,
+,[30],fst_wait_complete,fst_wait_complete from FRAMER CONTROLLER,
+,[31],fst_wait_opcode_triggers,fst_wait_opcode_triggers from FRAMER CONTROLLER,
+
+2,20,OOBREG_RDDATA_LANE_DATA_FIFO_SHIFT_ERRORS,RO,
+,[15:0],oobreg_rdData,OOBREG READ DATA just for testing the OOB REGISTER FILE,
+,[16],rx_invalid_dsp_d_width,Indicates dsp_d_width = 11 or incorrect for the current state,
+,[17],rx_recv_i8_q8_no_dsp_write,Indicates no DSP_WRITE in the ASSEMBLY CODE in RECV_Q8_I8 State,
+,[18],rx_recv_q12_i4_no_dsp_write,Indicates no DSP_WRITE in the ASSEMBLY CODE in RECV_Q12_I4 State,
+,[19],rx_recv_q16_no_dsp_write,Indicates no DSP_WRITE in the ASSEMBLY CODE in RECV_Q16 State,
+
+3,32,DAC_TEST_SAMP,RW,
+,[31:0],dac_test_samp,DAC Test Sample just for testing the 8LANE to 32 SAMPLE DISTRIBUTION FAN OUT Block,32'h0

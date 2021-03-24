@@ -1,0 +1,122 @@
+0,15,FRAMER_CONTROLLER_CONTROL,RW,
+,[9:0],few_num_entries_minus_1,RISC-V writes the number of FEW entries minus 1 in the MICROCODE_SRAM,10'h0
+,[10],sw_rst_n,Active-Low SOFTWARE RESETn - RISC-V resets Controller only - Chip wakes up with SOFTWARE RESET OFF,1'b1
+,[11],sw_enable,SOFTWARE MAIN FSM Enable - RISC-V resets this Framer Controller only - Chip wakes up with SOFTWARE Enable OFF,1'b0
+,[12],disable_lmfc_sync,Disables the initial 2 LMFC pulse synchronization for IDLE to RUN FSM transition.,1'b0
+,[13],wr_microcode,RISC-V writes microcode as a FEW entry-the systemverilog code for this is massaged with a script to yield a D-FLIP-FLOP that will capture the wr_microcode pulse,1'b0
+,[14],enable_lmfc_count,Enable 8-bit LMFC counte.r,1'b0
+
+1,28,FRAMER_CONTROLLER_STATUS,RO,
+,[0],config_complete,Indicates MICROCODE_SRAM configuration is complete,
+,[1],config_active,Indicates MICROCODE_SRAM configuration is on-going,
+,[2],invalid_few_num_entries_err_bit,ERROR: Indicates FEW number of entries is invalid,
+,[6:3],main_fsm_state,Main FSM State,
+,[10:7],cfg_fsm_state,Config FSM State,
+,[20:11],few_counter,1st loaded with few_num_entries_minus_1-then counts down,
+,[21],nop_active, HIGH during NOP execution,
+,[22],wait_active, HIGH during WAIT execution,
+,[23],fst_wait_complete,HIGH after 1st WAIT has completed,
+,[24],freeze_pc, PC is frozen,
+,[25],stack_overflow_err_bit,A stack overflow condition occurred.,
+,[26],stack_underflow_err_bit,A stack underflow condition occurred.,
+,[27],pc_out_of_bounds,Sticky bit that indicates PC is out of bounds.,
+
+# ============================================
+# Trigger modes:
+#   0:  Disabled
+#   1:  Trigger single ETB capture if trigger_count_match
+#   2:  Trigger ETB capture stop if trigger_count_match
+#   3:  Trigger ETB capture mid-point
+#   4:  HW Addr LSW
+#   5:  HW Addr MSW
+#   6:  HW Addr LSW if break_count_match
+#   7:  HW Addr MSW if break_count_match
+#
+# ============================================
+2,31,TRIGGER_CONTROL,RW,
+,[7:0],trigger1_count,Number of times HW/SW break must occur or LMFC count/CMP count match must occur before trigger occurs.,8'h0
+,[15:8],trigger2_count,Number of times HW/SW break must occur or LMFC count/CMP count match must occur before trigger occurs.,8'h0
+,[17:16],trigger1_count_mode,Mode for trigger1_count value: 00: HW/SW break match count==break_count  01: lmfc_count==break_count  10: Match count=break_count.,2'h0
+,[19:18],trigger2_count_mode,Mode for trigger1_count value: 00: HW/SW break match count==break_count  01: lmfc_count==break_count  10: Match count=break_count.,2'h0
+,[22:20],trigger1_mode,Trigger 1 operation mode.,2'h0
+,[25:23],trigger2_mode,Trigger 2 operation mode.,2'h0
+,[26],enable_trigger_chain,Enables trigger chain - Trigger 1 triggers Trigger 2.,1'b0
+,[27],trigger1_trace_en,Enable Trigger 1 for trace operation,1'b0
+,[28],trigger2_trace_en,Enable Trigger 2 for trace operation,1'b0
+,[29],trigger1_break_en,Enable Trigger 1 for break operation,1'b0
+,[30],trigger2_break_en,Enable Trigger 2 for break operation,1'b0
+
+3,32,WR_MICROCODE_REG_2,RW,
+,[31:0],wr_microcode_reg_2,MSB of the register used for loading FEW into the MICROCODE SRAM,32'h0000000
+
+4,32,WR_MICROCODE_REG_1,RW,
+,[31:0],wr_microcode_reg_1,Next to MSB of the register used for loading FEW into the MICROCODE SRAM,32'h00000000
+
+5,32,WR_MICROCODE_REG_0,RW,
+,[31:0],wr_microcode_reg_0,Next to MSB of the register used for loading FEW into the MICROCODE SRAM,32'h00000000
+
+6,12,MICROCODE_SRAM_BYTE_WRITE_MASK,RW,
+,[11:0],microcode_sram_be_write_mask,Masks writes of bytes-active HIGH-12 bytes for 90 FEW bits-11 bytes for 82 FEW bits ,12'hFFF
+
+7,23,MICROCODE_SRAM_CONTROL,RW,
+,[0],microcode_sram_stov,STOV - Self-timed pulse override active-HIGH,1'b0
+,[3:1],microcode_sram_ema,EMA - Extra Margin Adjustment,3'b010
+,[5:4],microcode_sram_emaw,EMAW - Extra Margin Adjustment - WRITE,2'b01
+,[6],microcode_sram_emas,EMAS - Extra Margin Adjustment - SENSE AMPLIFIER PULSE,1'b0
+,[7],microcode_sram_rdt,RDT - Advanced Test Feature used to test for weak bits in the memory,1'b0
+,[8],microcode_sram_cre1,CRE1 - Column Redundancy Enable Lower Half active-HIGH,1'b0
+,[9],microcode_sram_cre2,CRE2 - Column Redundancy Enable Upper Half active-HIGH,1'b0
+,[15:10],microcode_sram_fca1,FCA1 - Column Redundancy Address Lower Half Binary Encoded,6'b000000
+,[21:16],microcode_sram_fca2,FCA2 - Column Redundancy Address Upper Half Binary Encoded,6'b000000
+,[22],microcode_sram_cen_mask,Masks CEN so that SRAMs can be addressed separately - active LOW,1'b0
+
+8,26,WAIT_NOP_REGISTERS,RO,
+,[8:0],mframe_priod,Multiframe Period - Number of Clock Cycles between 2 LMFC's,
+,[17:9],wait_compare,Multiframe period compare value for WAIT opcode to proceed,
+,[25:18],nop_duration,Counts down from NOP Repeat Count,
+
+9,29,DEBUG_CONTROL,RW,
+,[9:0],hw_breakpoint1,Hardware breakpoint address 1,10'h0
+,[19:10],hw_breakpoint2,Hardware breakpoint address 2,10'h0
+,[24:20],debug_bus_addr,Debug bus address.  Debug data accessible at DEBUG_DATA register.,5'h0
+,[25],debug_halt,Halts the controller for debugging and single stepping,1'b0
+,[26],debug_enable,Enables debug mode.,1'b0
+,[27],etb_enable,Enables the Embedded Trace Buffer outputs for this Controller.,1'b0
+,[28],disable_sw_break,Disable SW BREAK opcode.,1'b0
+
+# ============================================
+# Registers on the Debug bus:
+#
+#               1,          1          6          8        10 
+# 5'h0:  { debug_stop, msw_executing, dptr, repeat_count,  pc }
+# 5'h1:  few[31:0]       Currently executing FEW
+# 5'h2:  few[63:32]
+# 5'h3:  few_in[31:0]    Input FEW from SRAM
+# 5'h4:  few_in[63:32] 
+# 5'h5:  few_in[95:64]
+#                1            1        10      10
+# 5'h6:  { mark_stack1, mark_stack0, stack1, stack0 }
+# 5'h1x: cmp_debug_dout
+#
+# ============================================
+10,32,DEBUG_DATA,RO,
+,[31:0],debug_data,Debug bus read data.,
+
+# ==================================
+# Address 11 is for self clearing bits
+# ==================================
+11,6,SELF_CLEARING,RW,
+b,[0],initiate_config,RISC-V initiates config,1'b0
+b,[1],debug_single_step,Performs a single step operation during debug_halt mode.  Self clearing.,1'b0
+b,[2],debug_resume,Resume from hardware breakpoint.,1'b0
+b,[3],cl_invalid_few_num_entries,RISC-V Clears invalid_few_num_entries_err_bit,1'b0
+b,[4],cl_stack_overflow,RISC-V Clears stack_overflow_err_bit,1'b0
+b,[5],cl_stack_underflow,RISC-V Clears stack_underflow_err_bit,1'b0
+
+# =====================================================================================
+# NOTE!!!!  DO NOT PROCEED!
+#
+#           For Imola TX/RX FRAMER, THE UPPER 4 ADDRESSES ARE USED OUTSIDE THIS BLOCK.
+#           DO NOT ADD ANYTHING BEYOND THIS POINT AS THEY WILL NOT BE ADDRESSED BY
+#           THE ADDRESS DECODER!
+# =====================================================================================

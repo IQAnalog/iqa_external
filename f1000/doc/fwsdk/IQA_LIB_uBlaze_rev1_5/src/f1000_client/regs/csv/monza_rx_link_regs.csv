@@ -1,0 +1,90 @@
+# =======================================================
+# The registers below need to be duplicated for each lane
+# =======================================================
+0,16,RX_LANE_CGS_STATUS,RO,
+,[0],cgs_lock,Code Group Sync FSM Lock detection.,
+,[1],cgs_data,Code Group Sync FSM in Data State.,
+,[5:2],cgs_fsm_state,Code Group Sync FSM State.,
+,[6],cgs_k_det,Indicates /K/ detected on raw 10B data.,
+,[15:7],decoded_8b_data_comb,Bring out decoded_8b_data_comb for observability.,
+
+1,32,RX_LANE_COUNTS,RO,
+,[7:0],k_count,Number of detected /K/ symbols.,
+,[15:8],err_count,Number of windowed detected error symbols.,
+,[23:16],misalign_cnt,Count of alignment errors detected.,
+,[31:24],realign_cnt,Count of re-alignment requests due to alignment error detection.,
+
+2,12,RX_LANE_CONFIG,RW,
+,[0],lane_link,The link in which this lane participates.,1'b0
+,[5:1],lane_id,The JESD204B Lane ID for this lane.,5'h0
+,[6],test_repeat_k_en,Repeated /K/ test mode enable.,1'b0
+,[7],test_repeat_d21_5_en,Repeated /D21.5/ test mode enable_follow CGS State (no ILAS State).,1'b0
+,[8],disparity_reg_in,disparity_reg input for controllability.,1'b0
+,[9],en_disparity_fb,Use to disable disparity feedback for controllability.,1'b1
+,[10],ld_disparity_reg,Use to load the disparity register for controllability.,1'b0
+,[11],align_report_only,Only perform reporting when Align Monitoring is enabled.,1'b0
+
+3,24,RX_TOTAL_ERRORS,RO,
+,[15:0],lane_total_errors,Total number of errors detected for the lane.,
+,[23:16],sync_req_cnt,Number of sync requests made due to alignment errors.,
+
+4,16,RX_ILAS_STATUS,RO,
+,[4:0],ilas_cfg_lid,Lane ID from ILAS Config.,
+,[5],ilas_checksum_error,Checksum error during ILAS config.,
+,[9:6],ilas_fsm_state,Initial Lane Alignment Sequence FSM state.,
+,[10],ilas_lid_mismatch,Lane ID mismatch between TX and RX.,
+,[11],ilas_aligned,Indicates ILAS Alignment has occurred.,
+,[12],disparity_reg,Bring out disparity_reg for observability.,
+,[13],a_det_comb,Bring out /A/ detector for observability.,
+,[14],r_det_comb,Bring out /R/ detector for observability.,
+,[15],f_det_comb,Bring out /F/ detector for observability.,
+
+5,18,RX_MANUAL_CONTROL,RW,
+,[0],manual_enable,Enable manual control of CGS / ILAS states.,1'b0
+,[1],manual_fifo_reset,Peform SerDes FIFO reset.,1'b0
+,[2],manual_rx_cgs_locked,Manually force the RX CGS into locked state.,1'b0
+,[3],manual_rx_cgs_done,Manually force RX CGS into done state.,1'b0
+,[4],bit_reverse,Reverse bit order from lane SerDes.,1'b0
+,[13:5],man_link_layer_out,Manual link layer out from manual control register.,9'h000
+,[14],inject_link_layer_out,Select link layer out from manual control register.,1'b0
+,[15],cgs_fifo_rst_disable,Block cgs_fifo_reset from rx_cgs_fsm.sv,1'b0
+,[16],pipeline_20b_reverse,Reverse pipeline order for 20b raw SerDes data pipeline.,1'b0
+,[17],pipeline_20b_freeze,Freeze the 20b raw SerDes data pipeline.,1'b0
+
+6,16,RX_LANE_D21_5_COUNTS,RO,
+,[7:0],d21_5_count,Number of detected D21_5 symbols.,
+,[11:8],lane_align_tap,Alignment tap value (in unaligned Raw 20bit Data).,
+,[12],s_det_comb,Bring out /S/ detector for observability.,
+,[13],q_det_comb,Bring out /Q/ detector for observability.,
+,[14],err_det_comb,Bring out Err detector for observability.,
+,[15],disp_err_det_comb,Bring out Disparity error for observability.,
+
+7,32,RX_LANE_NON_K_CNT4TEST,RO,
+,[14:0],non_k_cnt4test,Number of detected non-K symbols in test_repeat_k_en mode.,
+,[15],disparity_comb,Bring out disparity_comb for observability.,
+,[30:16],non_d21_5_cnt4test,Number of detected non-D21_5 symbols in test_repeat_d21_5_en mode.,
+,[31],toggle_disparity,Bring out toggle_disparity for observability.,
+
+8,20,SERDES_20B_PIPELINE,RO,
+,[19:0],pipeline_20b_data,Raw SerDes 20B pipeline data.  Must freeze the pipeline first.,
+
+9,16,RX_CONFIG0_DATA,RO,
+,[15:0],config0,ILAS Config data bytes 0 (LSB) and 1 (MSB).,
+
+10,16,RX_CONFIG1_DATA,RO,
+,[15:0],config1,ILAS Config data bytes 2 (LSB) and 3 (MSB).,
+
+11,16,RX_CONFIG2_DATA,RO,
+,[15:0],config2,ILAS Config data bytes 4 (LSB) and 5 (MSB).,
+
+12,16,RX_CONFIG3_DATA,RO,
+,[15:0],config3,ILAS Config data bytes 6 (LSB) and 7 (MSB).,
+
+13,16,RX_CONFIG4_DATA,RO,
+,[15:0],config4,ILAS Config data bytes 8 (LSB) and 9 (MSB).,
+
+14,16,RX_CONFIG5_DATA,RO,
+,[15:0],config5,ILAS Config data bytes 10 (LSB) and 11 (MSB).,
+
+15,16,RX_CONFIG6_DATA,RO,
+,[15:0],config6,ILAS Config data bytes 12 (LSB) and 13 (MSB).,
