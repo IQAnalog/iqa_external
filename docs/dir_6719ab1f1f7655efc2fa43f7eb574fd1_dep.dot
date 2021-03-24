@@ -1,0 +1,12 @@
+digraph "libs" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_6719ab1f1f7655efc2fa43f7eb574fd1 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html"];
+    dir_6719ab1f1f7655efc2fa43f7eb574fd1 [shape=plaintext label="libs"];
+    dir_94ce3beca8397c8d2c96619258b3eafe [shape=box label="lib_iqa_api" color="red" fillcolor="white" style="filled" URL="dir_94ce3beca8397c8d2c96619258b3eafe.html"];
+    dir_62550ca3226bcb297b73a04c48e5a29d [shape=box label="lib_iqa_hal" color="black" fillcolor="white" style="filled" URL="dir_62550ca3226bcb297b73a04c48e5a29d.html"];
+  }
+  dir_62550ca3226bcb297b73a04c48e5a29d->dir_94ce3beca8397c8d2c96619258b3eafe [headlabel="1", labeldistance=1.5 headhref="dir_000005_000001.html"];
+}
