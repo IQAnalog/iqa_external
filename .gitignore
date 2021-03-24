@@ -1,0 +1,9 @@
+.depend
+*.o
+*.a
+*.d
+*.i
+*~
+.swp
+.*.swp
+
